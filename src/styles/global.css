@@ -1,0 +1,17 @@
+:root {
+  --black: #232832;
+  --white: white;
+  --white-100: #eee;
+  --grey-100: rgba(255, 255, 255, 0.3);
+  --yellow: #f9e564;
+  --primary: #63b5bb;
+  --grey: #333;
+  --grey-light: #f1f1f3;
+  --gradient: linear-gradient(
+    45deg,
+    rgba(250, 230, 101, 1) 0%,
+    rgba(99, 181, 187, 1) 100%
+  );
+
+  --font-family: 'Noto Sans', sans-serif;
+}
