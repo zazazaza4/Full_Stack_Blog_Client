@@ -20,5 +20,7 @@
 }
 .subtitle {
   color: var(--yellow);
-  font-size: 16px;
+  font-size: 20px;
+}
+.input {
 }

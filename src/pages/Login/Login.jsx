@@ -34,14 +34,14 @@ const Login = () => {
   return (
     <main className={styles.login}>
       <div className={styles.wrapper}>
-        <h1 className={styles.title}>Blog</h1>
+        <h1 className={styles.title}>LOGIN</h1>
         <h2 className={styles.subtitle}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia,
-          quisquam?
+          For users who want to add their posts
         </h2>
+        <hr className={styles.hr} />
         <form onSubmit={(e) => e.preventDefault()}>
           <div className={styles.input}>
-            <p className="">username</p>
+            <p className="">Username</p>
             <input
               type="text"
               value={username}
@@ -49,7 +49,7 @@ const Login = () => {
             />
           </div>
           <div className={styles.input}>
-            <p className="">password</p>
+            <p className="">Password</p>
             <input
               type="text"
               value={password}

@@ -1,3 +1,4 @@
+import AddPost from '../pages/AddPost/AddPost';
 import Home from '../pages/Home/Home';
 import Login from '../pages/Login/Login';
 
@@ -6,6 +7,7 @@ import {
   LOGIN_ROUTE,
   HOME_ROUTE,
   ABOUT_ROUTE,
+  ADD_POST_ROUTE,
 } from '../utils/consts';
 
 export const publicRoutes = [
@@ -27,5 +29,9 @@ export const privateRoutes = [
   {
     path: ABOUT_ROUTE,
     Component: Home,
+  },
+  {
+    path: ADD_POST_ROUTE,
+    Component: AddPost,
   },
 ];
