@@ -31,24 +31,29 @@ const AddPost = () => {
 
   return (
     <main className={styles.edit}>
-      <label className={styles.file}>
-        Attach an image
-        <input
-          type="file"
-          className={styles.hidden}
-          onChange={(e) => {
-            setNewImage(e.target.files[0]);
-            setOldImage('');
-          }}
-        />
-      </label>
-      <div className={styles.img}>
-        {oldImage && (
-          <img src={`http://localhost:3002/${oldImage}`} alt={oldImage.name} />
-        )}
-        {newImage && (
-          <img src={URL.createObjectURL(newImage)} alt={newImage.name} />
-        )}
+      <div className={styles.attach}>
+        <label className={styles.file}>
+          Attach an image
+          <input
+            type="file"
+            className={styles.hidden}
+            onChange={(e) => {
+              setNewImage(e.target.files[0]);
+              setOldImage('');
+            }}
+          />
+        </label>
+        <div className={styles.img}>
+          {oldImage && (
+            <img
+              src={`http://localhost:3002/${oldImage}`}
+              alt={oldImage.name}
+            />
+          )}
+          {newImage && (
+            <img src={URL.createObjectURL(newImage)} alt={newImage.name} />
+          )}
+        </div>
       </div>
 
       <label className={styles.title}>

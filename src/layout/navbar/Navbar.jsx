@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { navData } from '../../utils/data';
 
 import styles from './Navbar.module.css';
@@ -11,9 +11,17 @@ const Navbar = () => {
           {navData.map(({ title, route }) => {
             return (
               <li key={title} className={styles.menu__item}>
-                <Link to={route} className={styles.link}>
+                <NavLink
+                  style={({ isActive }) => {
+                    return {
+                      color: isActive ? 'var(--primary)' : '',
+                    };
+                  }}
+                  to={route}
+                  className={styles.link}
+                >
                   <span>{title}</span>
-                </Link>
+                </NavLink>
               </li>
             );
           })}

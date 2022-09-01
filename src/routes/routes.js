@@ -1,3 +1,4 @@
+import About from '../pages/About/About';
 import AddPost from '../pages/AddPost/AddPost';
 import Home from '../pages/Home/Home';
 import Login from '../pages/Login/Login';
@@ -28,7 +29,7 @@ export const privateRoutes = [
   },
   {
     path: ABOUT_ROUTE,
-    Component: Home,
+    Component: About,
   },
   {
     path: ADD_POST_ROUTE,

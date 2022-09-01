@@ -1,0 +1,15 @@
+.main {
+  padding: 20px 60px;
+}
+
+.wrapper {
+  display: flex;
+}
+
+.posts {
+  flex-grow: 1;
+}
+
+.popularPost {
+  width: 300px;
+}

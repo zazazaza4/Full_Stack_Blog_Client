@@ -5,34 +5,34 @@ export const navData = [
   },
   {
     title: 'ABOUT',
-    route: '/',
+    route: '/about',
   },
   {
     title: 'ARCHIVE',
-    route: '/',
+    route: '/archive',
   },
   {
     title: 'LEGAL',
-    route: '/',
+    route: '/legal',
   },
   {
     title: 'MEDIA',
-    route: '/',
+    route: '/media',
   },
   {
     title: 'ADVERTISE',
-    route: '/',
+    route: '/advertise',
   },
   {
     title: 'CONTRIBUTE',
-    route: '/',
+    route: '/contribute',
   },
   {
     title: 'CONTACT',
-    route: '/',
+    route: '/contact',
   },
   {
     title: 'LOGIN',
-    route: '/',
+    route: '/login',
   },
 ];
