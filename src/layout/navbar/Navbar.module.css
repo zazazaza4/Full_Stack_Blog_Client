@@ -31,9 +31,11 @@
   cursor: pointer;
 }
 
-.menu__item:hover {
+.menu__item:hover a {
   color: var(--yellow);
 }
 
 .link {
+  color: var(--white);
+  text-decoration: none;
 }

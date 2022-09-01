@@ -1,7 +1,12 @@
 import Home from '../pages/Home/Home';
 import Login from '../pages/Login/Login';
 
-import { REGISTER_ROUTE, LOGIN_ROUTE, HOME_ROUTE } from '../utils/consts';
+import {
+  REGISTER_ROUTE,
+  LOGIN_ROUTE,
+  HOME_ROUTE,
+  ABOUT_ROUTE,
+} from '../utils/consts';
 
 export const publicRoutes = [
   {
@@ -17,6 +22,10 @@ export const publicRoutes = [
 export const privateRoutes = [
   {
     path: HOME_ROUTE,
+    Component: Home,
+  },
+  {
+    path: ABOUT_ROUTE,
     Component: Home,
   },
 ];
