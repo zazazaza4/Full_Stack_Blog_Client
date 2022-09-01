@@ -8,7 +8,7 @@ const Header = () => {
         <nav className="">
           <ul className={styles.menu}>
             <li className="item">Notification</li>
-            <li className="item">Blog</li>
+            <li className="item">Add a post</li>
             <li className="item">About</li>
             <li className="item">LogIn</li>
           </ul>
