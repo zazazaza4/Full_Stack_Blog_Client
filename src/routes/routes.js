@@ -2,6 +2,7 @@ import About from '../pages/About/About';
 import AddPost from '../pages/AddPost/AddPost';
 import Home from '../pages/Home/Home';
 import Login from '../pages/Login/Login';
+import SinglePost from '../pages/SinglePost/SinglePost';
 
 import {
   REGISTER_ROUTE,
@@ -9,6 +10,9 @@ import {
   HOME_ROUTE,
   ABOUT_ROUTE,
   ADD_POST_ROUTE,
+  PROFILE_ROUTE,
+  USER_ROUTE,
+  POST_ROUTE,
 } from '../utils/consts';
 
 export const publicRoutes = [
@@ -32,7 +36,19 @@ export const privateRoutes = [
     Component: About,
   },
   {
+    path: PROFILE_ROUTE,
+    Component: About,
+  },
+  {
     path: ADD_POST_ROUTE,
     Component: AddPost,
+  },
+  {
+    path: USER_ROUTE,
+    Component: AddPost,
+  },
+  {
+    path: POST_ROUTE,
+    Component: SinglePost,
   },
 ];

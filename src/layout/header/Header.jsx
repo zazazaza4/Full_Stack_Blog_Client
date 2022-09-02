@@ -12,7 +12,7 @@ const Header = () => {
               <Link to="/notification">Notification</Link>
             </li>
             <li className={styles.item}>
-              <Link to="/add-post">Add a post</Link>
+              <Link to="/posts/new">Add a post</Link>
             </li>
             <li className={styles.item}>
               <Link to="/about">About</Link>

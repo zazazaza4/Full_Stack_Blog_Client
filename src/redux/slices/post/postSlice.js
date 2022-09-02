@@ -12,6 +12,9 @@ const postSlice = createSlice({
     setPosts: (state, action) => {
       state.posts = action.payload;
     },
+    setPopularPosts: (state, action) => {
+      state.posts = action.payload;
+    },
     addPost: (state, action) => {
       state.posts.push(action.payload);
     },
@@ -29,6 +32,7 @@ const postSlice = createSlice({
 
 export const getPosts = (state) => state.posts;
 
-export const { setPosts, addPost, deletePost, updatePost } = postSlice.actions;
+export const { setPosts, addPost, deletePost, updatePost, setPopularPosts } =
+  postSlice.actions;
 
 export default postSlice.reducer;

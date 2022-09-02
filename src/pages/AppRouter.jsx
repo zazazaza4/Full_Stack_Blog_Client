@@ -25,7 +25,7 @@ const AppRouter = () => {
     getMe();
   }, []);
 
-  return true ? (
+  return false ? (
     <Routes>
       {privateRoutes.map(({ path, Component }) => {
         return <Route key={path} path={path} element={<Component />} />;

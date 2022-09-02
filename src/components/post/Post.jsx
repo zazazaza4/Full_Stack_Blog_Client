@@ -1,17 +1,29 @@
+import { Link } from 'react-router-dom';
 import styles from './Post.module.css';
 
-const Post = ({ title, date, img, comments }) => {
+const Post = ({
+  title,
+  text,
+  photo = 'default.jpg',
+  categories,
+  createdAt,
+  _id,
+  views,
+}) => {
   return (
     <article className={styles.post}>
-      <div className={styles.img}>
-        <img src={img} alt={title} />
-      </div>
-      <div className={styles.text}>
-        <h3 className={styles.title}>{title}</h3>
-        <p className={styles.metadata}>
-          {date} | Comments({comments})
-        </p>
-      </div>
+      <Link to={`posts/${_id}`}>
+        <div className={styles.img}>
+          <img src={`http://localhost:5000/default.jpg`} alt={title} />
+        </div>
+        <div className={styles.text}>
+          <h3 className={styles.title}>{title}</h3>
+          <p className={styles.disc}>{text}</p>
+          <p className={styles.metadata}>
+            {createdAt} | Views({views})
+          </p>
+        </div>
+      </Link>
     </article>
   );
 };

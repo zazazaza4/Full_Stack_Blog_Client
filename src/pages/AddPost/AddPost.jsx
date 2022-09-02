@@ -1,4 +1,7 @@
 import { useCallback, useMemo, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addPost } from '../../redux/slices/post/postSlice';
+import axios from '../../utils/axios';
 import SimpleMDE from 'react-simplemde-editor';
 import { withLayout } from '../../layout/Layout';
 
@@ -7,8 +10,9 @@ import styles from './AddPost.module.css';
 const AddPost = () => {
   const [text, setText] = useState('');
   const [title, setTitle] = useState('');
-  const [oldImage, setOldImage] = useState('');
-  const [newImage, setNewImage] = useState('');
+  const [image, setImage] = useState('');
+
+  const dispatch = useDispatch();
 
   const onChange = useCallback((value) => {
     setText(value);
@@ -29,30 +33,45 @@ const AddPost = () => {
     []
   );
 
+  const submitHandler = async () => {
+    if (!title || !text) {
+      return;
+    }
+    try {
+      const formData = new FormData();
+      formData.append('title', title);
+      formData.append('text', text);
+      formData.append('image', image);
+
+      const { data: res } = await axios.post('posts', formData);
+      dispatch(addPost(res));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const clearData = () => {
+    setText('');
+    setTitle('');
+    setImage('');
+  };
+
   return (
-    <main className={styles.edit}>
+    <form onSubmit={(e) => e.preventDefault()} className={styles.edit}>
       <div className={styles.attach}>
         <label className={styles.file}>
           Attach an image
           <input
             type="file"
+            accept="image/png, image/gif, image/jpeg"
             className={styles.hidden}
             onChange={(e) => {
-              setNewImage(e.target.files[0]);
-              setOldImage('');
+              setImage(e.target.files[0]);
             }}
           />
         </label>
         <div className={styles.img}>
-          {oldImage && (
-            <img
-              src={`http://localhost:3002/${oldImage}`}
-              alt={oldImage.name}
-            />
-          )}
-          {newImage && (
-            <img src={URL.createObjectURL(newImage)} alt={newImage.name} />
-          )}
+          {image && <img src={URL.createObjectURL(image)} alt={image.name} />}
         </div>
       </div>
 
@@ -74,21 +93,15 @@ const AddPost = () => {
       />
 
       <div className={styles.buttons}>
-        <button
-          onClick={() => console.log('submitHandler')}
-          className={styles.button}
-        >
-          Обновить
+        <button onClick={submitHandler} className={styles.button}>
+          Add
         </button>
 
-        <button
-          onClick={() => console.log('clearFormHandler')}
-          className={styles.button}
-        >
-          Отменить
+        <button onClick={clearData} className={styles.button}>
+          Cancel
         </button>
       </div>
-    </main>
+    </form>
   );
 };
 

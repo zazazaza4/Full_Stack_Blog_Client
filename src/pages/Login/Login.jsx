@@ -1,9 +1,11 @@
 import axios from '../../utils/axios';
 import { useDispatch } from 'react-redux';
+import { logIn } from '../../redux/slices/auth/authSlice';
+import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import icon from '../../assets/logo.png';
 
 import styles from './Login.module.css';
-import { logIn } from '../../redux/slices/auth/authSlice';
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -34,27 +36,34 @@ const Login = () => {
   return (
     <main className={styles.login}>
       <div className={styles.wrapper}>
+        <Link to="/" className={styles.icon}>
+          <img src={icon} alt="" />
+        </Link>
         <h1 className={styles.title}>LOGIN</h1>
         <h2 className={styles.subtitle}>
           For users who want to add their posts
         </h2>
         <hr className={styles.hr} />
-        <form onSubmit={(e) => e.preventDefault()}>
+        <form onSubmit={(e) => e.preventDefault()} className={styles.form}>
           <div className={styles.input}>
-            <p className="">Username</p>
-            <input
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
+            <label className={styles.label}>
+              Username
+              <input
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
+            </label>
           </div>
           <div className={styles.input}>
-            <p className="">Password</p>
-            <input
-              type="text"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
+            <label className={styles.label}>
+              Password
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </label>
           </div>
           <button
             className={styles.button}
@@ -64,6 +73,10 @@ const Login = () => {
             Submit
           </button>
         </form>
+        <div className={styles.links}>
+          <Link to="/lostpassword">Lost your password?</Link>
+          <Link to="/register">Register</Link>
+        </div>
       </div>
     </main>
   );
