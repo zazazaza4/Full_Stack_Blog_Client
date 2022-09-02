@@ -2,6 +2,7 @@ import About from '../pages/About/About';
 import AddPost from '../pages/AddPost/AddPost';
 import Home from '../pages/Home/Home';
 import Login from '../pages/Login/Login';
+import Register from '../pages/Register/Register';
 import SinglePost from '../pages/SinglePost/SinglePost';
 
 import {
@@ -22,7 +23,7 @@ export const publicRoutes = [
   },
   {
     path: REGISTER_ROUTE,
-    Component: Login,
+    Component: Register,
   },
 ];
 
