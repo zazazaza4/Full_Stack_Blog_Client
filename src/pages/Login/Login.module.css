@@ -96,20 +96,21 @@
   border-radius: 10px;
   transition: all 0.15s ease-in-out;
   background-color: var(--primary);
-  border-bottom: 2px solid var(--black);
-  font-size: 16px;
+  border-bottom: 2px solid var(--yellow);
+  font-size: 18px;
+  font-weight: 900;
 
   cursor: pointer;
 }
 
 .button:hover {
   background-color: var(--yellow);
+  color: var(--white-100);
   border-bottom: 2px solid var(--primary);
 }
 
 .button:active {
   opacity: 0.6;
-  border-bottom: 1px solid var(--primary);
 }
 
 .links {

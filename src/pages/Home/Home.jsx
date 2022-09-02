@@ -6,50 +6,51 @@ import { withLayout } from '../../layout/Layout';
 
 import styles from './Home.module.css';
 import { setPopularPosts, setPosts } from '../../redux/slices/post/postSlice';
+import Widget from '../../components/widget/Widget';
 
 const Home = () => {
   const dispatch = useDispatch();
-  const { posts } = useSelector((state) => state.post);
+  const { posts, popularPosts } = useSelector((state) => state.post);
 
   const getAllPosts = async () => {
     const { data } = await axios.get('posts').catch((e) => console.log(e));
+    console.log(data);
     dispatch(setPosts(data.posts));
-    dispatch(setPopularPosts(data.popuslarPosts));
+    dispatch(setPopularPosts(data.popularPosts));
   };
 
   useEffect(() => {
     getAllPosts();
-  }, []);
+  }, [dispatch]);
+
+  if (posts && posts.length === 0) {
+    return (
+      <main className={styles.main}>
+        <div className={styles.wrapper}>
+          <h2 className={styles.title}>Empty</h2>
+        </div>
+      </main>
+    );
+  }
 
   return (
     <main className={styles.main}>
       <div className={styles.wrapper}>
-        <div className={styles.posts}>
+        <div className={styles.left}>
           <ul className={styles.list}>
-            {posts.map((post) => {
-              return (
-                <li key={post._id}>
-                  <Post {...post} />
-                </li>
-              );
-            })}
-            {posts.map((post) => {
-              return (
-                <li key={post._id}>
-                  <Post {...post} />
-                </li>
-              );
-            })}
-            {posts.map((post) => {
-              return (
-                <li key={post._id}>
-                  <Post {...post} />
-                </li>
-              );
-            })}
+            {posts &&
+              posts.map((post) => {
+                return (
+                  <li key={post._id}>
+                    <Post {...post} />
+                  </li>
+                );
+              })}
           </ul>
         </div>
-        <div className={styles.popularPost}>Popular</div>
+        <div className={styles.right}>
+          <Widget title="The most popular" icon="" list={popularPosts} />
+        </div>
       </div>
     </main>
   );
