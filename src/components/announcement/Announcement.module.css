@@ -1,0 +1,11 @@
+.announcement {
+  padding: 5px;
+  width: 100%;
+  text-align: center;
+  color: var(--white-100);
+  background-color: var(--black);
+}
+
+.title {
+  font-size: 3.6rem;
+}

@@ -7,6 +7,7 @@ import { withLayout } from '../../layout/Layout';
 import styles from './Home.module.css';
 import { setPopularPosts, setPosts } from '../../redux/slices/post/postSlice';
 import Widget from '../../components/widget/Widget';
+import Announcement from '../../components/announcement/Announcement';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -23,33 +24,30 @@ const Home = () => {
     getAllPosts();
   }, [dispatch]);
 
-  if (posts && posts.length === 0) {
-    return (
-      <main className={styles.main}>
-        <div className={styles.wrapper}>
-          <h2 className={styles.title}>Empty</h2>
-        </div>
-      </main>
-    );
-  }
+  const renderPosts = (posts) => {
+    if (!posts || posts.length === 0) {
+      return <h2 className={styles.title}>Empty</h2>;
+    }
 
+    return posts.map((post) => {
+      return (
+        <li key={post._id}>
+          <Post {...post} />
+        </li>
+      );
+    });
+  };
+
+  const postsEl = renderPosts(posts);
   return (
     <main className={styles.main}>
+      <Announcement>Hello, It is the best blog in the world</Announcement>
       <div className={styles.wrapper}>
         <div className={styles.left}>
-          <ul className={styles.list}>
-            {posts &&
-              posts.map((post) => {
-                return (
-                  <li key={post._id}>
-                    <Post {...post} />
-                  </li>
-                );
-              })}
-          </ul>
+          <ul className={styles.list}>{postsEl}</ul>
         </div>
         <div className={styles.right}>
-          <Widget title="The most popular" icon="" list={popularPosts} />
+          <Widget title="The most popular" list={popularPosts} />
         </div>
       </div>
     </main>

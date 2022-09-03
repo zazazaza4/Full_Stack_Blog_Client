@@ -1,12 +1,13 @@
 .main {
-  padding: 20px 60px;
+  overflow-x: hidden;
 }
 
 .wrapper {
   display: flex;
+  gap: 60px;
 }
 
-.posts {
+.left {
   flex-grow: 1;
 }
 
@@ -16,6 +17,11 @@
   gap: 50px 30px;
 }
 
+.right {
+  flex: 1 1 400px;
+  flex-shrink: 1;
+}
+
 .popularPost {
-  width: 300px;
+  width: 200px;
 }

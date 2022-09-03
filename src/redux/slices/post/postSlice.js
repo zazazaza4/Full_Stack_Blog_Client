@@ -13,7 +13,7 @@ const postSlice = createSlice({
       state.posts = action.payload;
     },
     setPopularPosts: (state, action) => {
-      state.posts = action.payload;
+      state.popularPosts = action.payload;
     },
     addPost: (state, action) => {
       state.posts.push(action.payload);

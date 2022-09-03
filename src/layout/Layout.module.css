@@ -6,7 +6,9 @@
 .header {
 }
 .body {
+  margin-top: 80px;
   flex: 1 0 auto;
+  background-color: var(--white);
 }
 .navbar {
 }

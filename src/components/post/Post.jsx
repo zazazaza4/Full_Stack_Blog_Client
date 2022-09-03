@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import format from 'date-format';
 import styles from './Post.module.css';
 
 const Post = ({
@@ -20,7 +21,7 @@ const Post = ({
           <h3 className={styles.title}>{title}</h3>
           <p className={styles.disc}>{text}</p>
           <p className={styles.metadata}>
-            {createdAt} | Views({views})
+            {format('dd/MM/yyyy', new Date(createdAt))} | Views({views})
           </p>
         </div>
       </Link>
