@@ -17,10 +17,13 @@ const Register = () => {
 
   const handleSubmit = async () => {
     try {
-      const { data } = await axios.post('auth/login', {
-        username,
-        password,
-      });
+      const formData = new FormData();
+      formData.append('username', username);
+      formData.append('password', password);
+      formData.append('email', email);
+      formData.append('image', image);
+
+      const { data } = await axios.post('auth/register', formData);
 
       if (data.token) {
         window.localStorage.setItem('token', JSON.stringify(data.token));
@@ -30,13 +33,15 @@ const Register = () => {
 
       setUsername('');
       setPassword('');
+      setImage('');
+      setEmail('');
     } catch (error) {
       console.log(error);
     }
   };
 
   return (
-    <main className={styles.login}>
+    <main className={styles.register}>
       <div className={styles.wrapper}>
         <Link to="/" className={styles.icon}>
           <img src={icon} alt="" />

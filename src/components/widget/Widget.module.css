@@ -21,14 +21,16 @@
   font-size: 18px;
 }
 
-.item {
+.link {
   padding: 20px;
+  display: block;
+
   border-bottom: 0.2px dotted var(--black);
   transition: all 0.2s ease-in-out;
 
   cursor: pointer;
 }
 
-.item:hover {
+.link:hover {
   background: var(--white-100);
 }

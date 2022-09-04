@@ -8,31 +8,11 @@ export const navData = [
     route: '/about',
   },
   {
-    title: 'ARCHIVE',
-    route: '/archive',
-  },
-  {
-    title: 'LEGAL',
-    route: '/legal',
-  },
-  {
-    title: 'MEDIA',
-    route: '/media',
-  },
-  {
-    title: 'ADVERTISE',
-    route: '/advertise',
-  },
-  {
-    title: 'CONTRIBUTE',
-    route: '/contribute',
+    title: 'ADD A POST',
+    route: '/posts/new',
   },
   {
     title: 'CONTACT',
     route: '/contact',
-  },
-  {
-    title: 'LOGIN',
-    route: '/login',
   },
 ];

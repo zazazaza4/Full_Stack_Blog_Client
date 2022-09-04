@@ -1,0 +1,23 @@
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+
+  color: var(--black);
+  text-align: center;
+}
+
+.title404 {
+  font-size: 72px;
+  margin: 0;
+}
+.title {
+  font-size: 32px;
+  margin: 0;
+}
+
+a {
+  color: var(--black);
+  text-decoration: none;
+}

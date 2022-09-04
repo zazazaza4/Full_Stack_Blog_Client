@@ -43,9 +43,11 @@ const Header = () => {
               </Link>
             </li>
             <li className={styles.item}>
-              <div className={styles.item__icon}>
-                <img src={accountIcon} alt="" />
-              </div>
+              <Link to="/profile">
+                <div className={styles.item__icon}>
+                  <img src={accountIcon} alt="" />
+                </div>
+              </Link>
             </li>
           </ul>
         </nav>

@@ -1,0 +1,29 @@
+.single {
+  margin: 0 auto;
+  padding: 0 20px;
+}
+.wrapper {
+  margin: 0 auto;
+  max-width: 700px;
+  text-align: center;
+}
+.navigate {
+}
+.title {
+}
+.img {
+  max-width: 700px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

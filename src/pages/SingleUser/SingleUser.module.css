@@ -1,0 +1,11 @@
+.wrapper {
+  padding: 20px 90px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

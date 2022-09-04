@@ -1,28 +1,36 @@
 import axios from '../../utils/axios';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Post from '../../components/post/Post';
 import { withLayout } from '../../layout/Layout';
+import { setPopularPosts, setPosts } from '../../redux/slices/post/postSlice';
+import { Announcement, Post, Widget } from '../../components';
 
 import styles from './Home.module.css';
-import { setPopularPosts, setPosts } from '../../redux/slices/post/postSlice';
-import Widget from '../../components/widget/Widget';
-import Announcement from '../../components/announcement/Announcement';
 
 const Home = () => {
+  const [categories, setCategories] = useState([]);
+
   const dispatch = useDispatch();
   const { posts, popularPosts } = useSelector((state) => state.post);
 
   const getAllPosts = async () => {
     const { data } = await axios.get('posts').catch((e) => console.log(e));
-    console.log(data);
     dispatch(setPosts(data.posts));
     dispatch(setPopularPosts(data.popularPosts));
+  };
+
+  const getAllCategories = async () => {
+    const { data } = await axios.get('categories').catch((e) => console.log(e));
+    console.log(data);
   };
 
   useEffect(() => {
     getAllPosts();
   }, [dispatch]);
+
+  useEffect(() => {
+    getAllCategories();
+  }, [categories]);
 
   const renderPosts = (posts) => {
     if (!posts || posts.length === 0) {
@@ -47,7 +55,8 @@ const Home = () => {
           <ul className={styles.list}>{postsEl}</ul>
         </div>
         <div className={styles.right}>
-          <Widget title="The most popular" list={popularPosts} />
+          <Widget title="The most popular posts" list={popularPosts} />
+          <Widget title="Categories" list={categories} />
         </div>
       </div>
     </main>
