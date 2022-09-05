@@ -1,7 +1,7 @@
 .button {
   padding: 10px 25px;
   border: none;
-  color: var(--grey);
+  color: var(--grey-light);
   border-radius: 10px;
   transition: all 0.15s ease-in-out;
   background-color: var(--primary);
@@ -14,7 +14,7 @@
 
 .button:hover {
   background-color: var(--yellow);
-  color: var(--white-100);
+  color: var(--grey);
   border-bottom: 2px solid var(--primary);
 }
 

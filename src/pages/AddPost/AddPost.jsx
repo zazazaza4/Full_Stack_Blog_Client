@@ -6,6 +6,7 @@ import SimpleMDE from 'react-simplemde-editor';
 import { withLayout } from '../../layout/Layout';
 
 import styles from './AddPost.module.css';
+import { Button } from '../../components';
 
 const AddPost = () => {
   const [text, setText] = useState('');
@@ -57,51 +58,48 @@ const AddPost = () => {
   };
 
   return (
-    <form onSubmit={(e) => e.preventDefault()} className={styles.edit}>
-      <div className={styles.attach}>
-        <label className={styles.file}>
-          Attach an image
+    <main className={styles.main}>
+      <form onSubmit={(e) => e.preventDefault()} className={styles.edit}>
+        <div className={styles.attach}>
+          <label className={styles.file}>
+            Attach an image
+            <input
+              type="file"
+              accept="image/png, image/gif, image/jpeg"
+              className={styles.hidden}
+              onChange={(e) => {
+                setImage(e.target.files[0]);
+              }}
+            />
+          </label>
+          <div className={styles.img}>
+            {image && <img src={URL.createObjectURL(image)} alt={image.name} />}
+          </div>
+        </div>
+
+        <label className={styles.title}>
+          Заголовок поста:
           <input
-            type="file"
-            accept="image/png, image/gif, image/jpeg"
-            className={styles.hidden}
-            onChange={(e) => {
-              setImage(e.target.files[0]);
-            }}
+            type="text"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            placeholder="Title"
+            className={styles.input}
           />
         </label>
-        <div className={styles.img}>
-          {image && <img src={URL.createObjectURL(image)} alt={image.name} />}
-        </div>
-      </div>
-
-      <label className={styles.title}>
-        Заголовок поста:
-        <input
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          placeholder="Title"
-          className={styles.input}
+        <SimpleMDE
+          className={styles.editor}
+          value={text}
+          onChange={onChange}
+          options={options}
         />
-      </label>
-      <SimpleMDE
-        className={styles.editor}
-        value={text}
-        onChange={onChange}
-        options={options}
-      />
 
-      <div className={styles.buttons}>
-        <button onClick={submitHandler} className={styles.button}>
-          Add
-        </button>
-
-        <button onClick={clearData} className={styles.button}>
-          Cancel
-        </button>
-      </div>
-    </form>
+        <div className={styles.buttons}>
+          <Button onClick={submitHandler}>Add</Button>
+          <Button onClick={clearData}>Cancel</Button>
+        </div>
+      </form>
+    </main>
   );
 };
 

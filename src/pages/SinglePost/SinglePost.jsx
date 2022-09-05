@@ -6,7 +6,7 @@ import axios from '../../utils/axios';
 import ReactMarkdown from 'react-markdown';
 
 import styles from './SinglePost.module.css';
-import { Error } from '../../components';
+import { Button, Error } from '../../components';
 
 const SinglePost = () => {
   const [post, setPost] = useState(null);
@@ -30,9 +30,9 @@ const SinglePost = () => {
     post;
   return (
     <main className={styles.single}>
-      <div className={styles.navigate}>
-        <button className={styles.button}></button>
-      </div>
+      {/* <div className={styles.navigate}>
+        <Button className={styles.button}>Back</Button>
+      </div> */}
       <div className={styles.wrapper}>
         <div className={styles.img}>
           <img src={`http://localhost:5000/${photo}`} alt="" />
@@ -40,7 +40,7 @@ const SinglePost = () => {
 
         <div className={styles.meta}>
           <p className={styles.author}>
-            <Link to={`users/${author}`}>username</Link>
+            <Link to={`/users/${author}`}>username</Link>
           </p>
           <p className={styles.metadata}>
             {format('dd/MM/yyyy', new Date(createdAt))} | Views({views})
