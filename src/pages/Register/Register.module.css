@@ -28,6 +28,10 @@
   z-index: 1;
 }
 
+.error__img {
+  border: 4px dotted rgb(192, 34, 34);
+}
+
 .picture::after {
   content: '+';
   width: 50px;
@@ -91,7 +95,7 @@
 }
 
 .icon:hover img {
-  filter: hue-rotate(90deg);
+  transform: scale(1.05);
 }
 
 .icon img {
@@ -132,30 +136,6 @@
   color: var(--grey);
 }
 
-.button {
-  padding: 10px 25px;
-  border: none;
-  color: var(--grey);
-  border-radius: 10px;
-  transition: all 0.15s ease-in-out;
-  background-color: var(--primary);
-  border-bottom: 2px solid var(--black);
-  font-size: 18px;
-  font-weight: 900;
-
-  cursor: pointer;
-}
-
-.button:hover {
-  background-color: var(--yellow);
-  border-bottom: 2px solid var(--primary);
-  color: var(--white-100);
-}
-
-.button:active {
-  opacity: 0.6;
-}
-
 .links {
   margin-top: 30px;
   display: flex;
@@ -173,4 +153,10 @@
 
 .links a:hover {
   color: var(--primary);
+}
+
+.error {
+  color: rgb(192, 34, 34);
+  margin: 10px 0 0 0;
+  padding: 0;
 }

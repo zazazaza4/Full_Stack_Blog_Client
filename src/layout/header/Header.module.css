@@ -24,7 +24,7 @@
 }
 
 .icon:hover img {
-  filter: hue-rotate(80deg);
+  transform: scale(1.05);
 }
 
 .icon img {

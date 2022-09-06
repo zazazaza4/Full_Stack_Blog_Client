@@ -1,5 +1,7 @@
 import axios from '../../utils/axios';
+import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
+import { Button, Spinner } from '../../components';
 import { logIn } from '../../redux/slices/auth/authSlice';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
@@ -8,29 +10,55 @@ import icon from '../../assets/logo.png';
 import styles from './Login.module.css';
 
 const Login = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   const dispatch = useDispatch();
 
-  const handleSubmit = async () => {
+  const onSubmit = async (data) => {
+    setError(null);
+    const { username, password } = data;
+    if (!username || !password) {
+      return;
+    }
+    setLoading(true);
     try {
-      const { data } = await axios.post('auth/login', {
+      const { data: res } = await axios.post('auth/login', {
         username,
         password,
       });
-
-      if (data.token) {
-        window.localStorage.setItem('token', JSON.stringify(data.token));
+      if (res.token) {
+        window.localStorage.setItem('token', JSON.stringify(res.token));
       }
-
-      dispatch(logIn(data));
-
-      setUsername('');
-      setPassword('');
+      dispatch(logIn(res));
     } catch (error) {
-      console.log(error);
+      setError(error.response?.data.message);
+    } finally {
+      setLoading(false);
     }
+  };
+
+  const registerOptions = {
+    username: {
+      required: 'Username is required',
+      minLength: {
+        value: 4,
+        message: 'Username must have at least 4 characters',
+      },
+    },
+    password: {
+      required: 'Password is required',
+      minLength: {
+        value: 8,
+        message: 'Password must have at least 8 characters',
+      },
+    },
   };
 
   return (
@@ -44,35 +72,37 @@ const Login = () => {
           For users who want to add their posts
         </h2>
         <hr className={styles.hr} />
-        <form onSubmit={(e) => e.preventDefault()} className={styles.form}>
-          <div className={styles.input}>
-            <label className={styles.label}>
-              Username
-              <input
-                type="text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-              />
-            </label>
-          </div>
-          <div className={styles.input}>
-            <label className={styles.label}>
-              Password
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </label>
-          </div>
-          <button
-            className={styles.button}
-            type="submit"
-            onClick={handleSubmit}
-          >
-            Submit
-          </button>
-        </form>
+        {loading ? (
+          <Spinner />
+        ) : (
+          <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+            <div className={styles.input}>
+              <label className={styles.label}>
+                Username
+                <input
+                  placeholder="Bill"
+                  name="username"
+                  {...register('username', registerOptions.username)}
+                />
+              </label>
+              <p className={styles.error}>{errors.username?.message}</p>
+            </div>
+            <div className={styles.input}>
+              <label className={styles.label}>
+                Password
+                <input
+                  placeholder="Password"
+                  name="password"
+                  type="password"
+                  {...register('password', registerOptions.password)}
+                />
+              </label>
+              <p className={styles.error}>{errors.password?.message}</p>
+            </div>
+            <Button type="submit">Submit</Button>
+          </form>
+        )}
+        {error && <p className={styles.error}>{error}</p>}
         <div className={styles.links}>
           <Link to="/lostpassword">Lost your password?</Link>
           <Link to="/register">Register</Link>
