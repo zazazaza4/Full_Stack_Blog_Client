@@ -26,8 +26,17 @@ const SinglePost = () => {
     return;
   }
 
-  const { title, createdAt, text, views, comments, photo, categories, author } =
-    post;
+  const {
+    title,
+    username,
+    createdAt,
+    text,
+    views,
+    comments,
+    photo,
+    categories,
+    author,
+  } = post;
   return (
     <main className={styles.single}>
       {/* <div className={styles.navigate}>
@@ -35,12 +44,12 @@ const SinglePost = () => {
       </div> */}
       <div className={styles.wrapper}>
         <div className={styles.img}>
-          <img src={`http://localhost:5000/${photo}`} alt="" />
+          <img src={`${process.env.REACT_APP_API_URL}${photo}`} alt="" />
         </div>
 
         <div className={styles.meta}>
           <p className={styles.author}>
-            <Link to={`/users/${author}`}>username</Link>
+            <Link to={`/users/${author}`}>{username}</Link>
           </p>
           <p className={styles.metadata}>
             {format('dd/MM/yyyy', new Date(createdAt))} | Views({views})
@@ -48,6 +57,8 @@ const SinglePost = () => {
         </div>
 
         <h2 className={styles.title}>{title}</h2>
+
+        <hr className={styles.hr} />
 
         <div className={styles.body}>
           <ReactMarkdown children={text} />

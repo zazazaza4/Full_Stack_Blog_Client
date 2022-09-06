@@ -2,16 +2,19 @@ import { useCallback, useMemo, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addPost } from '../../redux/slices/post/postSlice';
 import axios from '../../utils/axios';
+import { Button } from '../../components';
+import { useNavigate } from 'react-router-dom';
 import SimpleMDE from 'react-simplemde-editor';
 import { withLayout } from '../../layout/Layout';
 
 import styles from './AddPost.module.css';
-import { Button } from '../../components';
 
 const AddPost = () => {
   const [text, setText] = useState('');
   const [title, setTitle] = useState('');
   const [image, setImage] = useState('');
+
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
 
@@ -35,7 +38,7 @@ const AddPost = () => {
   );
 
   const submitHandler = async () => {
-    if (!title || !text) {
+    if (text.length === 0 || title.length === 0 || image.length === 0) {
       return;
     }
     try {
@@ -46,6 +49,8 @@ const AddPost = () => {
 
       const { data: res } = await axios.post('posts', formData);
       dispatch(addPost(res));
+      clearData();
+      navigate('/');
     } catch (error) {
       console.log(error);
     }

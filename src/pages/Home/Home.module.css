@@ -14,11 +14,12 @@
 .list {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 50px 30px;
+  gap: 50px 0px;
 }
 
 .right {
-  flex: 1 1 0px;
+  position: sticky;
+  flex: 1 1 100px;
   flex-shrink: 1;
 }
 

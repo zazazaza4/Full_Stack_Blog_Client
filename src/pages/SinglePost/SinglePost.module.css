@@ -1,20 +1,24 @@
 .single {
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 50px 20px;
   position: relative;
 }
 
 .wrapper {
   margin: 0 auto;
-  max-width: 700px;
+  max-width: 1200px;
   text-align: center;
 }
+
 .navigate {
 }
+
 .title {
 }
+
 .img {
-  max-width: 700px;
+  margin: 0 auto;
+  max-width: 1000px;
   border-radius: 20px;
   overflow: hidden;
 }
@@ -25,7 +29,28 @@
 }
 
 .meta {
+  margin: 0 auto;
+  font-size: 20px;
+  max-width: 700px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.title {
+  font-size: 34px;
+  margin-bottom: 0;
+}
+
+.hr {
+  border: none;
+  height: 1px;
+  background: #000;
+  width: 60%;
+  margin-bottom: 20px;
+}
+
+.body {
+  font-size: 20px;
+  text-align: left;
 }
