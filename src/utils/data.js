@@ -13,6 +13,6 @@ export const navData = [
   },
   {
     title: 'CONTACT',
-    route: '/contact',
+    route: 'contact',
   },
 ];

@@ -1,7 +1,7 @@
 import axios from '../../utils/axios';
 import { useDispatch } from 'react-redux';
 import { logIn } from '../../redux/slices/auth/authSlice';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import icon from '../../assets/logo.png';
 
@@ -14,6 +14,8 @@ const Register = () => {
   const [image, setImage] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+
+  const navigate = useNavigate();
 
   const {
     register,
@@ -45,6 +47,7 @@ const Register = () => {
 
       dispatch(logIn(res));
       setImage('');
+      navigate('/login');
     } catch (error) {
       setError(error.response?.data.message);
     } finally {

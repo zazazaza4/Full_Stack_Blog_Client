@@ -6,7 +6,7 @@ import axios from '../../utils/axios';
 import ReactMarkdown from 'react-markdown';
 
 import styles from './SinglePost.module.css';
-import { Button, Error } from '../../components';
+import { Button } from '../../components';
 
 const SinglePost = () => {
   const [post, setPost] = useState(null);
@@ -39,32 +39,44 @@ const SinglePost = () => {
   } = post;
   return (
     <main className={styles.single}>
-      {/* <div className={styles.navigate}>
-        <Button className={styles.button}>Back</Button>
-      </div> */}
       <div className={styles.wrapper}>
-        <div className={styles.img}>
-          <img src={`${process.env.REACT_APP_API_URL}${photo}`} alt="" />
+        <div className={styles.left}>
+          <div className={styles.img}>
+            <img src={`${process.env.REACT_APP_API_URL}${photo}`} alt="" />
+          </div>
+          <h2 className={styles.title}>{title}</h2>
+          <div className={styles.meta}>
+            <p className={styles.author}>
+              <Link to={`/users/${author}`}>Author: {username}</Link>
+            </p>
+            <p className={styles.metadata}>
+              {format('dd - MM - yyyy', new Date(createdAt))} | Views({views})
+            </p>
+          </div>
+
+          <div className={styles.body}>
+            <ReactMarkdown children={text} />
+          </div>
         </div>
-
-        <div className={styles.meta}>
-          <p className={styles.author}>
-            <Link to={`/users/${author}`}>{username}</Link>
-          </p>
-          <p className={styles.metadata}>
-            {format('dd/MM/yyyy', new Date(createdAt))} | Views({views})
-          </p>
+        <div className={styles.right}>
+          <div className={styles.comment}>
+            <div className={styles.comments}>
+              <div className={styles.container}>
+                <p>fssf sddfs</p>
+                <p>fssf sddfs</p>
+                <p>fssf sddfs</p>
+                <p>fssf sddfs</p>
+                <p>fssf sddfs</p>
+              </div>
+            </div>
+            <div className={styles.add}>
+              <div className={styles.textarea}>
+                <textarea type="text" placeholder="Write a comment"></textarea>
+              </div>
+              <Button>Add Comment</Button>
+            </div>
+          </div>
         </div>
-
-        <h2 className={styles.title}>{title}</h2>
-
-        <hr className={styles.hr} />
-
-        <div className={styles.body}>
-          <ReactMarkdown children={text} />
-        </div>
-
-        <div className={styles.comments}></div>
       </div>
     </main>
   );

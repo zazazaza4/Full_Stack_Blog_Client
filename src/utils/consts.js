@@ -11,7 +11,6 @@ export const POST_ROUTE = '/posts/:id';
 export const ADD_POST_ROUTE = '/posts/new';
 
 export const ABOUT_ROUTE = '/about';
-export const CONTACT_ROUTE = '/contact';
 
 //General Email Regex
 export const regExpEmail =
