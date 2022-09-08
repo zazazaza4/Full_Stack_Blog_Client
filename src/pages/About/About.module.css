@@ -1,53 +1,78 @@
 .about {
-  background: var(--white-100);
   padding: 40px 20px 10px;
-  display: flex;
-  min-height: calc(100vh - 75px - 190px);
-  justify-content: center;
-  color: var(--black);
-}
-
-.title {
-  margin: 40px 0;
-  font-size: 40px;
-  text-align: center;
 }
 
 .body {
-  display: flex;
-  gap: 50px;
-  align-items: flex-start;
-  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .content {
-  flex: 1 1 auto;
-  border: 1px solid var(--grey);
-  width: 20vw;
-  border-radius: 4px;
-  overflow: hidden;
-  padding: 0;
+  max-width: 75%;
+  margin: 0 auto;
+  padding: 0 40px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 16px;
+  color: var(--grey-200);
+  line-height: 1.8;
+  position: relative;
 }
 
-.subtitle {
-  font-size: 32px;
-  text-align: center;
-  background: var(--primary);
-  margin: 0;
-  color: var(--white-100);
-  padding: 10px;
+.content::before {
+  content: '';
+  position: absolute;
+  background: var(--green-100);
+  top: -20%;
+  left: 50%;
+  height: 3px;
+  width: 40px;
 }
 
-.list {
-  padding: 0;
-  margin: 0;
-  font-size: 24px;
+.location {
+  display: flex;
+  align-items: center;
+  margin: 70px;
+  height: 470px;
 }
 
-.item {
-  padding: 12px;
-  color: var(--dark);
-  text-align: center;
-  background: var(--yellow);
-  border-top: 1px solid var(--black);
+.left {
+  background: url('../../assets/about-contact.webp') 0/100% no-repeat;
+  height: 100%;
+  flex: 0 0 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--white);
+}
+
+.map {
+  height: 100%;
+  line-height: 1.8;
+}
+
+.h2 {
+  text-transform: uppercase;
+  font-size: 36px;
+  margin-bottom: 15px;
+  font-weight: normal;
+  font-family: var(--font-family);
+}
+
+.p__contact {
+  margin-bottom: 40px;
+}
+
+.h3 {
+  font-size: 18px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  font-weight: normal;
+  font-family: var(--font-family);
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
 }

@@ -2,9 +2,9 @@ import { useMemo } from 'react';
 
 import styles from './GoogleMap.module.css';
 
-const GoogleMap = () => {
+const GoogleMap = ({ className }) => {
   return (
-    <section className={styles.map}>
+    <section className={`${styles.map} ${className}`}>
       <iframe
         className={styles.frame}
         frameBorder="0"
