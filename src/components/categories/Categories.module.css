@@ -48,3 +48,11 @@
 .category:hover::after {
   content: '';
 }
+
+.selected {
+  color: var(--black-100);
+}
+
+.selected::after {
+  content: '';
+}

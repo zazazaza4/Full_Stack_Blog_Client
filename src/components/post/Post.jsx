@@ -1,8 +1,9 @@
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import format from 'date-format';
 import styles from './Post.module.css';
 
-const Post = ({ title, text, photo, categories, createdAt, _id, views }) => {
+const Post = ({ title, photo, categories = [], createdAt, _id }) => {
   const trunc = (str, length) => {
     if (typeof str !== 'string' && typeof length !== 'number') {
       return 'Error';
@@ -14,8 +15,13 @@ const Post = ({ title, text, photo, categories, createdAt, _id, views }) => {
     return str;
   };
 
+  const category = categories.length > 0 ? categories[0] : '';
   return (
-    <article className={styles.post}>
+    <motion.article
+      animate={{ opacity: [0, 0.5, 1] }}
+      transition={{ ease: 'easeOut', duration: 1 }}
+      className={styles.post}
+    >
       <Link to={`posts/${_id}`}>
         <div className={styles.img}>
           <img
@@ -24,14 +30,14 @@ const Post = ({ title, text, photo, categories, createdAt, _id, views }) => {
           />
         </div>
         <div className={styles.text}>
-          <h4 className={styles.category}>{trunc(categories, 50)}</h4>
+          <h4 className={styles.category}>{trunc(category, 50)}</h4>
           <h3 className={styles.title}>{trunc(title, 50)}</h3>
           <p className={styles.metadata}>
             {format(`ddft MM yyyy`, new Date(createdAt))}
           </p>
         </div>
       </Link>
-    </article>
+    </motion.article>
   );
 };
 export default Post;

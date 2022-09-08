@@ -90,6 +90,14 @@
   content: '';
 }
 
+.selected::after {
+  content: '';
+}
+
+.selected {
+  color: var(--black-100);
+}
+
 .switches {
   margin-left: 30px;
   display: flex;

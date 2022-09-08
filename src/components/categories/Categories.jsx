@@ -1,9 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { motion } from 'framer-motion';
 import axios from '../../utils/axios';
 
 import styles from './Categories.module.css';
 
-const Categories = ({ className }) => {
+const Categories = ({ selectCategory, className = '' }) => {
+  const itemRefs = useRef([]);
   const [categories, setCategories] = useState([
     {
       name: 'all',
@@ -27,23 +29,53 @@ const Categories = ({ className }) => {
 
   const getAllCategories = async () => {
     const { data } = await axios.get('categories').catch((e) => console.log(e));
-    console.log(data);
   };
 
   useEffect(() => {
     getAllCategories();
   });
 
+  const focusOnItem = (id) => {
+    console.log(itemRefs.current);
+    itemRefs.current.forEach((element) => {
+      element.classList.remove(styles.selected);
+    });
+
+    itemRefs.current[id].classList.add(styles.selected);
+    itemRefs.current[id].focus();
+  };
+
+  const selectCategoryById = (id) => {
+    focusOnItem(id);
+    selectCategory(id);
+  };
+
+  const renderPosts = (categories) => {
+    return categories.map(({ name }, index) => {
+      return (
+        <li
+          ref={(elem) => (itemRefs.current[index] = elem)}
+          tabIndex={0}
+          onClick={() => selectCategoryById(index)}
+          className={styles.category}
+          key={name}
+        >
+          {name}
+        </li>
+      );
+    });
+  };
+
+  const categoriesEl = renderPosts(categories);
+
   return (
-    <ul className={`${styles.categories} ${className}`}>
-      {categories.map(({ name }) => {
-        return (
-          <li className={styles.category} key={name}>
-            {name}
-          </li>
-        );
-      })}
-    </ul>
+    <motion.ul
+      animate={{ opacity: [0, 0.5, 1], x: [-100, 0] }}
+      transition={{ ease: 'easeOut', duration: 1 }}
+      className={`${styles.categories} ${className}`}
+    >
+      {categoriesEl}
+    </motion.ul>
   );
 };
 export default Categories;

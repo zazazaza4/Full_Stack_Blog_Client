@@ -1,21 +1,18 @@
 .button {
   padding: 10px 25px;
   border: none;
-  color: var(--grey-light);
-  border-radius: 10px;
-  transition: all 0.15s ease-in-out;
-  background-color: var(--primary);
-  border-bottom: 2px solid var(--yellow);
-  font-size: 18px;
-  font-weight: 900;
+  display: inline-block;
+  color: #fff;
+  font-size: 14px;
+  text-transform: uppercase;
+  background: #0ece91;
+  transition: all 0.3s ease-in-out;
 
   cursor: pointer;
 }
 
 .button:hover {
-  background-color: var(--yellow);
-  color: var(--grey);
-  border-bottom: 2px solid var(--primary);
+  opacity: 0.8;
 }
 
 .button:active {
