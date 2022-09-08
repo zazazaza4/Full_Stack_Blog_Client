@@ -27,7 +27,7 @@ const Post = ({ title, text, photo, categories, createdAt, _id, views }) => {
           <h4 className={styles.category}>{trunc(categories, 50)}</h4>
           <h3 className={styles.title}>{trunc(title, 50)}</h3>
           <p className={styles.metadata}>
-            {format('dd/MM/yyyy', new Date(createdAt))}
+            {format(`ddft MM yyyy`, new Date(createdAt))}
           </p>
         </div>
       </Link>
