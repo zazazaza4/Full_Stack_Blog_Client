@@ -1,29 +1,20 @@
 .main {
   padding-top: 30px;
   padding-bottom: 22px;
-  background: var(--white-100);
+  background: var(--white);
   min-height: calc(100vh - 75px - 190px);
 }
 
 .edit {
-  margin: 0 auto;
-  padding: 10px;
+  margin: 60px auto;
+  padding: 10px 20px;
   max-width: 1000px;
-  color: var(--grey);
-
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 30px;
-  grid-template-areas:
-    'attach  title'
-    'attach  body'
-    'button button';
+  box-shadow: 0 9px 62px rgb(0 0 0 / 10%);
 }
 
 .img {
   flex-grow: 1;
-  max-width: 400px;
-  max-height: 400px;
+  margin-bottom: 40px;
 }
 
 .img img {
@@ -39,25 +30,25 @@
 }
 
 .input {
-  border: none;
+  width: 100%;
   outline: none;
-  margin-left: 20px;
-  padding: 10px 8px;
-  border-radius: 10px;
-  border-bottom: 2px solid var(--primary);
-  transition: all 0.2s ease-in-out;
-
+  border: none;
+  font-size: 14px;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   font-size: 16px;
-  color: var(--grey);
-}
 
-.editor {
-  grid-area: body;
+  transition: 0.4s;
 }
 
 .input:focus {
-  border-bottom: 2px solid var(--yellow);
-  background-color: var(--grey-100);
+  border-bottom-color: #0ece91;
+  color: #111;
+}
+
+.editor {
+  margin: 20px 0;
 }
 
 .hidden {
@@ -65,7 +56,6 @@
 }
 
 .attach {
-  grid-area: attach;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -73,60 +63,33 @@
 
 .file {
   flex-shrink: 1;
-  height: 20px;
   width: 50%;
   margin: auto;
   padding-top: 20px;
   padding-bottom: 20px;
+  border-bottom: 1px solid var(--green-100);
 
   text-align: center;
   font-size: 24px;
-  color: var(--grey);
-
-  border-radius: 20px;
-  background-color: var(--yellow);
-  border-bottom: 4px solid var(--primary);
-  box-shadow: 0px 3px 4px var(--black);
+  text-transform: uppercase;
 
   transition: all 0.12s ease-in-out;
   cursor: pointer;
 }
 
-.file:hover {
-  box-shadow: 0px 3px 13px var(--black);
+.file img {
+  height: 20px;
+  margin-right: 10px;
 }
 
-.file:active {
-  border-bottom: 1px solid var(--primary);
+.file:hover {
+  color: var(--green-100);
 }
 
 .buttons {
-  grid-area: button;
+  padding: 20px;
   width: 30%;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
-}
-
-.button {
-  padding: 10px 25px;
-  border: none;
-  color: var(--grey);
-  border-radius: 10px;
-  transition: all 0.15s ease-in-out;
-  background-color: var(--primary);
-  border-bottom: 2px solid var(--black);
-  font-size: 16px;
-
-  cursor: pointer;
-}
-
-.button:hover {
-  background-color: var(--yellow);
-  border-bottom: 2px solid var(--primary);
-}
-
-.button:active {
-  opacity: 0.6;
-  border-bottom: 1px solid var(--primary);
 }

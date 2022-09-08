@@ -1,0 +1,21 @@
+.banner {
+  background-image: url('../../assets/banner.webp');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 300px;
+  width: calc(100% - 148px);
+  margin: 0 auto;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  font-size: 54px;
+  color: #fff;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  font-weight: normal;
+  font-family: var(--font-family);
+}

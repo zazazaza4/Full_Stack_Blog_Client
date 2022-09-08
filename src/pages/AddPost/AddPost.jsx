@@ -1,11 +1,14 @@
 import { useCallback, useMemo, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addPost } from '../../redux/slices/post/postSlice';
-import axios from '../../utils/axios';
-import { Button } from '../../components';
 import { useNavigate } from 'react-router-dom';
 import SimpleMDE from 'react-simplemde-editor';
+
+import { addPost } from '../../redux/slices/post/postSlice';
+import axios from '../../utils/axios';
+import { Banner, Button, Categories } from '../../components';
 import { withLayout } from '../../layout/Layout';
+
+import iconUpload from '../../assets/upload.png';
 
 import styles from './AddPost.module.css';
 
@@ -64,9 +67,11 @@ const AddPost = () => {
 
   return (
     <main className={styles.main}>
+      <Banner>Create your own post right now</Banner>
       <form onSubmit={(e) => e.preventDefault()} className={styles.edit}>
         <div className={styles.attach}>
           <label className={styles.file}>
+            <img src={iconUpload} alt="" />
             Attach an image
             <input
               type="file"
@@ -83,7 +88,6 @@ const AddPost = () => {
         </div>
 
         <label className={styles.title}>
-          Заголовок поста:
           <input
             type="text"
             value={title}
@@ -92,6 +96,7 @@ const AddPost = () => {
             className={styles.input}
           />
         </label>
+        <Categories />
         <SimpleMDE
           className={styles.editor}
           value={text}
@@ -100,8 +105,8 @@ const AddPost = () => {
         />
 
         <div className={styles.buttons}>
-          <Button onClick={submitHandler}>Add</Button>
-          <Button onClick={clearData}>Cancel</Button>
+          <Button onClick={submitHandler}>ADD</Button>
+          <Button onClick={clearData}>CLEAR</Button>
         </div>
       </form>
     </main>

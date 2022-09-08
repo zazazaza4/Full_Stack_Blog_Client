@@ -3,12 +3,9 @@
 }
 
 .wrapper {
+  margin-top: 15px;
   max-width: 1200px;
   margin: 0 auto;
-}
-
-.left {
-  flex-grow: 1;
 }
 
 .list {

@@ -6,6 +6,7 @@ import Error from './error/Error';
 import Button from './button/Button';
 import Spinner from './spinner/Spinner';
 import Categories from './categories/Categories';
+import Banner from './banner/Banner';
 
 export {
   Widget,
@@ -15,5 +16,6 @@ export {
   Error,
   Button,
   Spinner,
+  Banner,
   Categories,
 };
