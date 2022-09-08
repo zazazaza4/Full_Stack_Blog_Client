@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { logIn } from '../../redux/slices/auth/authSlice';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import icon from '../../assets/logo.png';
+import icon from '../../assets/logo.webp';
 
 import styles from './Register.module.css';
 import { useForm } from 'react-hook-form';

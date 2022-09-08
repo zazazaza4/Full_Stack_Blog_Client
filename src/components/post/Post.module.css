@@ -2,8 +2,7 @@
   display: flex;
   flex-direction: column;
   border-radius: 8px;
-  max-width: 600px;
-
+  text-align: center;
   overflow: hidden;
 }
 .post a {
@@ -12,7 +11,9 @@
 }
 
 .img {
-  height: 250px;
+  width: 100%;
+  height: 260px;
+  margin-bottom: 15px;
   transition: all 0.4s ease-in-out;
 
   cursor: pointer;
@@ -45,9 +46,8 @@
   color: var(--primary);
 }
 
-.disc {
-  font-size: 24px;
-}
-
 .metadata {
+  color: var(--grey-200);
+  font-size: 16px;
+  font-family: var(--font-family-main);
 }

@@ -24,10 +24,10 @@ const Post = ({ title, text, photo, categories, createdAt, _id, views }) => {
           />
         </div>
         <div className={styles.text}>
+          <h4 className={styles.category}>{trunc(categories, 50)}</h4>
           <h3 className={styles.title}>{trunc(title, 50)}</h3>
-          <p className={styles.disc}>{trunc(text, 226)}</p>
           <p className={styles.metadata}>
-            {format('dd/MM/yyyy', new Date(createdAt))} | Views({views})
+            {format('dd/MM/yyyy', new Date(createdAt))}
           </p>
         </div>
       </Link>

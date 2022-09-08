@@ -5,7 +5,7 @@ import { Button, Spinner } from '../../components';
 import { logIn } from '../../redux/slices/auth/authSlice';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import icon from '../../assets/logo.png';
+import icon from '../../assets/logo.webp';
 
 import styles from './Login.module.css';
 

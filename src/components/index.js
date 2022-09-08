@@ -1,9 +1,19 @@
 import Widget from './widget/Widget';
 import Post from './post/Post';
 import Announcement from './announcement/Announcement';
-import Category from './category/Category';
+import Category from './categories/Categories';
 import Error from './error/Error';
 import Button from './button/Button';
 import Spinner from './spinner/Spinner';
+import Categories from './categories/Categories';
 
-export { Widget, Post, Announcement, Category, Error, Button, Spinner };
+export {
+  Widget,
+  Post,
+  Announcement,
+  Category,
+  Error,
+  Button,
+  Spinner,
+  Categories,
+};
