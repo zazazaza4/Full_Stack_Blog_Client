@@ -62,7 +62,7 @@ const Header = () => {
               </li>
               <li className={styles.item}>
                 <NavLink
-                  to="/contactd"
+                  to="/contact"
                   className={({ isActive }) =>
                     `${styles.link} ${isActive ? styles.selected : ''}`
                   }

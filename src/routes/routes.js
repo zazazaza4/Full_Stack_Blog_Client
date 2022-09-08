@@ -1,5 +1,6 @@
 import About from '../pages/About/About';
 import AddPost from '../pages/AddPost/AddPost';
+import Contact from '../pages/Contact/Contact';
 import Home from '../pages/Home/Home';
 import Login from '../pages/Login/Login';
 import Register from '../pages/Register/Register';
@@ -12,6 +13,7 @@ import {
   ABOUT_ROUTE,
   ADD_POST_ROUTE,
   POST_ROUTE,
+  CONTACT_ROUTE,
 } from '../utils/consts';
 
 export const publicRoutes = [
@@ -41,5 +43,9 @@ export const privateRoutes = [
   {
     path: POST_ROUTE,
     Component: SinglePost,
+  },
+  {
+    path: CONTACT_ROUTE,
+    Component: Contact,
   },
 ];
