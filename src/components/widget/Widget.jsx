@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom';
+import format from 'date-format';
+
 import styles from './Widget.module.css';
 
 const Widget = ({ title, list }) => {
@@ -11,7 +13,11 @@ const Widget = ({ title, list }) => {
             return (
               <li key={item._id} className={styles.item}>
                 <Link className={styles.link} to={`posts/${item._id}`}>
-                  {item.title}
+                  <div className={styles.category}>{item.category}</div>
+                  <h5 className={styles.h5}>{item.title}</h5>
+                  <div className={styles.date}>
+                    {format(`ddft MM yyyy`, new Date(item.createdAt))}
+                  </div>
                 </Link>
               </li>
             );

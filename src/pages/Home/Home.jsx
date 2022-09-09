@@ -8,7 +8,7 @@ import {
   Button,
   Categories,
   Post,
-  Widget,
+  Spinner,
 } from '../../components';
 
 import styles from './Home.module.css';

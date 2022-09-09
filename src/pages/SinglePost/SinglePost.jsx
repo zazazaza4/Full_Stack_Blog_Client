@@ -2,12 +2,6 @@ import { useCallback, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link, useParams } from 'react-router-dom';
 import format from 'date-format';
-import iconView from '../../assets/view.svg';
-import { withLayout } from '../../layout/Layout';
-import axios from '../../utils/axios';
-import ReactMarkdown from 'react-markdown';
-
-import styles from './SinglePost.module.css';
 import {
   Announcement,
   Button,
@@ -15,10 +9,19 @@ import {
   Spinner,
   Widget,
 } from '../../components';
+import { useSelector } from 'react-redux';
+import iconView from '../../assets/view.svg';
+import { withLayout } from '../../layout/Layout';
+import axios from '../../utils/axios';
+import ReactMarkdown from 'react-markdown';
+
+import styles from './SinglePost.module.css';
 
 const SinglePost = () => {
   const [loading, setLoading] = useState(true);
   const [post, setPost] = useState(null);
+
+  const { popularPosts } = useSelector((state) => state.post);
 
   const params = useParams();
 
@@ -115,7 +118,7 @@ const SinglePost = () => {
               </div>
             </motion.div>
             <div className={styles.right}>
-              <Widget title="POPULAR POSTS" />
+              <Widget title="POPULAR POSTS" list={popularPosts} />
             </div>
           </div>
         )}
