@@ -8,6 +8,7 @@ import { useState } from 'react';
 import icon from '../../assets/logo.webp';
 
 import styles from './Login.module.css';
+import { withLayout } from '../../layout/Layout';
 
 const Login = () => {
   const [loading, setLoading] = useState(false);
@@ -64,42 +65,36 @@ const Login = () => {
   return (
     <main className={styles.login}>
       <div className={styles.wrapper}>
-        <Link to="/" className={styles.icon}>
-          <img src={icon} alt="" />
-        </Link>
         <h1 className={styles.title}>LOGIN</h1>
-        <h2 className={styles.subtitle}>
-          For users who want to add their posts
-        </h2>
         <hr className={styles.hr} />
         {loading ? (
           <Spinner />
         ) : (
           <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-            <div className={styles.input}>
-              <label className={styles.label}>
-                Username
-                <input
-                  placeholder="Bill"
-                  name="username"
-                  {...register('username', registerOptions.username)}
-                />
-              </label>
-              <p className={styles.error}>{errors.username?.message}</p>
-            </div>
-            <div className={styles.input}>
-              <label className={styles.label}>
-                Password
-                <input
-                  placeholder="Password"
-                  name="password"
-                  type="password"
-                  {...register('password', registerOptions.password)}
-                />
-              </label>
-              <p className={styles.error}>{errors.password?.message}</p>
-            </div>
-            <Button type="submit">Submit</Button>
+            <label className={styles.label}>
+              <input
+                className={styles.input}
+                placeholder="Username"
+                name="username"
+                {...register('username', registerOptions.username)}
+              />
+            </label>
+            <p className={styles.error}>{errors.username?.message}</p>
+
+            <label className={styles.label}>
+              <input
+                className={styles.input}
+                placeholder="Password"
+                name="password"
+                type="password"
+                {...register('password', registerOptions.password)}
+              />
+            </label>
+            <p className={styles.error}>{errors.password?.message}</p>
+
+            <Button className={styles.button} type="submit">
+              Submit
+            </Button>
           </form>
         )}
         {error && <p className={styles.error}>{error}</p>}
@@ -111,4 +106,4 @@ const Login = () => {
     </main>
   );
 };
-export default Login;
+export default withLayout(Login);
