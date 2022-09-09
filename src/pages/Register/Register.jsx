@@ -161,4 +161,4 @@ const Register = () => {
     </main>
   );
 };
-export default withLayout(Register);
+export default Register;

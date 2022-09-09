@@ -106,4 +106,4 @@ const Login = () => {
     </main>
   );
 };
-export default withLayout(Login);
+export default Login;
