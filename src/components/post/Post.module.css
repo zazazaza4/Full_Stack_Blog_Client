@@ -54,3 +54,9 @@
   font-size: 16px;
   font-family: var(--font-family-main);
 }
+
+.category {
+  color: var(--green-100);
+  margin-bottom: 10px;
+  font-weight: normal;
+}

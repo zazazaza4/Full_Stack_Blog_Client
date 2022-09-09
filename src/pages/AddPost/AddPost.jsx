@@ -14,6 +14,7 @@ import styles from './AddPost.module.css';
 
 const AddPost = () => {
   const [text, setText] = useState('');
+  const [category, setCategory] = useState('');
   const [title, setTitle] = useState('');
   const [image, setImage] = useState('');
 
@@ -40,6 +41,10 @@ const AddPost = () => {
     []
   );
 
+  const selectCategory = (name) => {
+    setCategory(name);
+  };
+
   const submitHandler = async () => {
     if (text.length === 0 || title.length === 0 || image.length === 0) {
       return;
@@ -48,6 +53,7 @@ const AddPost = () => {
       const formData = new FormData();
       formData.append('title', title);
       formData.append('text', text);
+      formData.append('category', category);
       formData.append('image', image);
 
       const { data: res } = await axios.post('posts', formData);
@@ -96,7 +102,7 @@ const AddPost = () => {
             className={styles.input}
           />
         </label>
-        <Categories />
+        <Categories selectCategory={selectCategory} />
         <SimpleMDE
           className={styles.editor}
           value={text}

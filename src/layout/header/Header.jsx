@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 
 import icon from '../../assets/logo.webp';
-import account from '../../assets/account.svg';
+import logout from '../../assets/logout.svg';
 import search from '../../assets/search.svg';
 
 import styles from './Header.module.css';
@@ -13,7 +13,6 @@ const Header = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log('hello');
     window.addEventListener('scroll', isSticky);
     return () => {
       window.removeEventListener('scroll', isSticky);
@@ -92,7 +91,7 @@ const Header = () => {
               <span className={`${styles.line} ${styles.line3}`}></span>
             </div>
             <div className={styles.switches_icon}>
-              <img src={account} alt="" />
+              <img src={logout} alt="" />
             </div>
           </div>
         </div>

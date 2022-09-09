@@ -1,14 +1,23 @@
 import { useCallback, useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 import { Link, useParams } from 'react-router-dom';
 import format from 'date-format';
+import iconView from '../../assets/view.svg';
 import { withLayout } from '../../layout/Layout';
 import axios from '../../utils/axios';
 import ReactMarkdown from 'react-markdown';
 
 import styles from './SinglePost.module.css';
-import { Button } from '../../components';
+import {
+  Announcement,
+  Button,
+  Comment,
+  Spinner,
+  Widget,
+} from '../../components';
 
 const SinglePost = () => {
+  const [loading, setLoading] = useState(true);
   const [post, setPost] = useState(null);
 
   const params = useParams();
@@ -20,6 +29,7 @@ const SinglePost = () => {
 
   useEffect(() => {
     fetchPost();
+    setLoading(false);
   }, [params.id]);
 
   if (!post) {
@@ -34,49 +44,81 @@ const SinglePost = () => {
     views,
     comments,
     photo,
-    categories,
+    category,
     author,
   } = post;
   return (
     <main className={styles.single}>
       <div className={styles.wrapper}>
-        <div className={styles.left}>
-          <div className={styles.img}>
-            <img src={`${process.env.REACT_APP_API_URL}${photo}`} alt="" />
+        {loading ? (
+          <div className={styles.spinner}>
+            <Spinner />
           </div>
-          <h2 className={styles.title}>{title}</h2>
-          <div className={styles.meta}>
-            <p className={styles.author}>
-              <Link to={`/users/${author}`}>Author: {username}</Link>
-            </p>
-            <p className={styles.metadata}>
-              {format('dd - MM - yyyy', new Date(createdAt))} | Views({views})
-            </p>
-          </div>
-
-          <div className={styles.body}>
-            <ReactMarkdown children={text} />
-          </div>
-        </div>
-        <div className={styles.right}>
-          <div className={styles.comment}>
-            <div className={styles.comments}>
-              <div className={styles.container}>
-                <p>fssf sddfs</p>
-                <p>fssf sddfs</p>
-                <p>fssf sddfs</p>
-                <p>fssf sddfs</p>
-                <p>fssf sddfs</p>
+        ) : (
+          <div className={styles.row}>
+            <motion.div
+              animate={{ opacity: [0, 0.5, 1], scale: [0, 1] }}
+              transition={{ ease: 'easeOut', duration: 1 }}
+              className={styles.left}
+            >
+              <article className={styles.article}>
+                <div className={styles.category}>{category}</div>
+                <h2 className={styles.title}>{title}</h2>
+                <div className={styles.date}>
+                  {format(`ddft MM yyyy`, new Date(createdAt))}
+                </div>
+                <div className={styles.img}>
+                  <img
+                    src={`${process.env.REACT_APP_API_URL}${
+                      photo || 'default.jpg'
+                    }`}
+                    alt=""
+                    className=""
+                  />
+                </div>
+                <ReactMarkdown children={text} />
+                <footer className={styles.footer}>
+                  <div className={styles.row}>
+                    <p className={styles.author}>
+                      Author:{' '}
+                      <Link className={styles.link} to={`/?userId=${author}`}>
+                        {username}
+                      </Link>
+                    </p>
+                    <p className={styles.views}>
+                      <img src={iconView} alt="Views:" /> {views}
+                    </p>
+                  </div>
+                </footer>
+              </article>
+              <div className={styles.comments}>
+                <h4 className={styles.h4}>COMMENTS</h4>
+                <ul className={styles.list_commnets}>
+                  {comments?.length > 0 ? (
+                    comments?.map((comment) => {
+                      return <Comment comment={comment} />;
+                    })
+                  ) : (
+                    <Announcement>No Comments yet</Announcement>
+                  )}
+                </ul>
               </div>
-            </div>
-            <div className={styles.add}>
-              <div className={styles.textarea}>
-                <textarea type="text" placeholder="Write a comment"></textarea>
+              <div className={styles.comment__leave}>
+                <h4 className={styles.h4}>LEAVE A COMMENT</h4>
+                <form>
+                  <textarea
+                    placeholder="Messages"
+                    className={styles.textarea}
+                  ></textarea>
+                  <Button className={styles.button}>SEND MESSAGE</Button>
+                </form>
               </div>
-              <Button>Add Comment</Button>
+            </motion.div>
+            <div className={styles.right}>
+              <Widget title="POPULAR POSTS" />
             </div>
           </div>
-        </div>
+        )}
       </div>
     </main>
   );

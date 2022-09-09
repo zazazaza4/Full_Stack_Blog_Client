@@ -1,16 +1,13 @@
 import { Link } from 'react-router-dom';
 import styles from './Widget.module.css';
 
-const Widget = ({ title, icon, list }) => {
+const Widget = ({ title, list }) => {
   return (
     <section className={styles.widget}>
       <div className={styles.wrapper}>
-        <h1 className={styles.title}>
-          <img src={icon} alt="" />
-          <span>{title}</span>
-        </h1>
+        <h2 className={styles.title}>{title}</h2>
         <ul className={styles.list}>
-          {list.map((item) => {
+          {list?.map((item) => {
             return (
               <li key={item._id} className={styles.item}>
                 <Link className={styles.link} to={`posts/${item._id}`}>

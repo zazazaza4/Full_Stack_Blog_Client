@@ -29,20 +29,21 @@ const Home = () => {
     getAllPosts();
   }, [dispatch]);
 
-  const selectCategory = (id) => {};
+  const selectCategory = (name) => {
+    setCategory(() => name);
+  };
 
   const renderPosts = (posts) => {
-    if (!posts || posts.length === 0) {
-      return <h2 className={styles.title}>Empty</h2>;
-    }
-
     const filtredPosts = posts.filter((post) => {
-      if (category === 'all' || post.categories === 0) {
+      if (category.toLowerCase() === 'all' || !post?.category) {
+        return true;
+      } else if (category.toLowerCase() === post.category.toLowerCase()) {
         return true;
       }
+      return false;
     });
 
-    return posts.map((post) => {
+    return filtredPosts.map((post) => {
       return (
         <li className={styles.item} key={post._id}>
           <Post {...post} />
@@ -54,12 +55,14 @@ const Home = () => {
   const postsEl = renderPosts(posts);
   return (
     <main className={styles.main}>
-      <Announcement>
-        HELLO! WELCOME TO SUNZINE PHOTO GALLERY WITH CREATIVE & UNIQUE STYLE
-      </Announcement>
+      <Announcement>HELLO! WELCOME TO OUR BLOG</Announcement>
       <Categories selectCategory={selectCategory} />
       <div className={styles.wrapper}>
-        <ul className={styles.list}>{postsEl}</ul>
+        {postsEl.length === 0 ? (
+          <Announcement>No Posts Yet</Announcement>
+        ) : (
+          <ul className={styles.list}>{postsEl}</ul>
+        )}
       </div>
       <div className={styles.more}>
         <Button>More Posts</Button>

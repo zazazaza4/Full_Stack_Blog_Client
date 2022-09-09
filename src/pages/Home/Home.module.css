@@ -3,7 +3,7 @@
 }
 
 .wrapper {
-  margin-top: 15px;
+  padding-top: 10px;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -25,4 +25,3 @@
   text-align: center;
   padding: 100px 59px;
 }
-

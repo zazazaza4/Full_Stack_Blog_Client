@@ -8,6 +8,7 @@ import Spinner from './spinner/Spinner';
 import Categories from './categories/Categories';
 import Banner from './banner/Banner';
 import GoogleMap from './googleMap/GoogleMap';
+import Comment from './comment/Comment';
 
 export {
   Widget,
@@ -20,4 +21,5 @@ export {
   Banner,
   Categories,
   GoogleMap,
+  Comment,
 };

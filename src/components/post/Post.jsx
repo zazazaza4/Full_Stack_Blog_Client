@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import format from 'date-format';
 import styles from './Post.module.css';
 
-const Post = ({ title, photo, categories = [], createdAt, _id }) => {
+const Post = ({ title, photo, category = '', createdAt, _id }) => {
   const trunc = (str, length) => {
     if (typeof str !== 'string' && typeof length !== 'number') {
       return 'Error';
@@ -15,7 +15,6 @@ const Post = ({ title, photo, categories = [], createdAt, _id }) => {
     return str;
   };
 
-  const category = categories.length > 0 ? categories[0] : '';
   return (
     <motion.article
       animate={{ opacity: [0, 0.5, 1] }}

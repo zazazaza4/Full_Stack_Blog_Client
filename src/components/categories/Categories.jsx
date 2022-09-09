@@ -6,29 +6,19 @@ import styles from './Categories.module.css';
 
 const Categories = ({ selectCategory, className = '' }) => {
   const itemRefs = useRef([]);
-  const [categories, setCategories] = useState([
-    {
-      name: 'all',
-    },
-    {
-      name: 'PHOTOGRAPHY',
-    },
-    {
-      name: 'TRAVEL',
-    },
-    {
-      name: 'NATURE',
-    },
-    {
-      name: 'FASHION',
-    },
-    {
-      name: 'STYLE',
-    },
-  ]);
+  const [categories, setCategories] = useState([]);
 
   const getAllCategories = async () => {
     const { data } = await axios.get('categories').catch((e) => console.log(e));
+    setCategories([
+      {
+        name: 'All',
+      },
+      {
+        name: 'IT',
+      },
+      ...data,
+    ]);
   };
 
   useEffect(() => {
@@ -47,7 +37,7 @@ const Categories = ({ selectCategory, className = '' }) => {
 
   const selectCategoryById = (id) => {
     focusOnItem(id);
-    selectCategory(id);
+    selectCategory(categories[id]?.name);
   };
 
   const renderPosts = (categories) => {

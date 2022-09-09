@@ -1,0 +1,14 @@
+.img {
+  float: left;
+  margin-right: 30px;
+}
+
+.text::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: calc(100% - 50px);
+  width: 1px;
+  background: rgba(37, 37, 37, 0.1);
+}

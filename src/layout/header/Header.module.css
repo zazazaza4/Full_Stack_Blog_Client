@@ -24,16 +24,15 @@
 
 .wrapper {
   margin: 0 auto;
-  max-width: 1500px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 18px 20px;
+  padding: 21px 80px;
 }
 
 .icon {
-  width: 120px;
-  height: 20px;
+  width: 142px;
+  height: 24px;
 
   cursor: pointer;
 }
@@ -52,6 +51,7 @@
   display: flex;
   align-items: center;
   align-items: center;
+  gap: 40px;
 }
 
 .menu {
@@ -62,7 +62,7 @@
 
 .menu ul {
   display: flex;
-  gap: 25px;
+  gap: 35px;
 }
 
 .link {
