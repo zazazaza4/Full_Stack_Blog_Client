@@ -3,12 +3,13 @@ import { useDispatch } from 'react-redux';
 import { logIn } from '../../redux/slices/auth/authSlice';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import icon from '../../assets/logo.webp';
+import iconUpload from '../../assets/upload.png';
 
 import styles from './Register.module.css';
 import { useForm } from 'react-hook-form';
 import { regExpEmail } from '../../utils/consts';
 import { Button, Spinner } from '../../components';
+import { withLayout } from '../../layout/Layout';
 
 const Register = () => {
   const [image, setImage] = useState('');
@@ -85,13 +86,7 @@ const Register = () => {
   return (
     <main className={styles.register}>
       <div className={styles.wrapper}>
-        <Link to="/" className={styles.icon}>
-          <img src={icon} alt="" />
-        </Link>
         <h1 className={styles.title}>REGISTER</h1>
-        <h2 className={styles.subtitle}>
-          For users who want to add their posts
-        </h2>
         <hr className={styles.hr} />
         {loading ? (
           <Spinner />
@@ -99,63 +94,61 @@ const Register = () => {
           <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
             <p className={styles.error}>{errors.image?.message}</p>
 
-            <div
-              className={`${styles.picture} ${
-                errors.image?.message ? styles.error__img : ''
-              }`}
-            >
-              <label className={styles.label}>
+            <div className={styles.attach}>
+              <label className={styles.file}>
+                <img src={iconUpload} alt="" />
+                Attach an image
                 <input
                   type="file"
                   accept="image/png, image/gif, image/jpeg"
-                  name="image"
-                  {...register('image', registerOptions.image)}
                   className={styles.hidden}
                   onChange={(e) => {
                     setImage(e.target.files[0]);
                   }}
                 />
+              </label>
+              <div className={styles.img}>
                 {image && (
                   <img src={URL.createObjectURL(image)} alt={image.name} />
                 )}
-              </label>
+              </div>
             </div>
-            <div className={styles.input}>
-              <label className={styles.label}>
-                Email
-                <input
-                  placeholder="email@example.com"
-                  type="email"
-                  name="email"
-                  {...register('email', registerOptions.email)}
-                />
-              </label>
-              <p className={styles.error}>{errors.email?.message}</p>
-            </div>
-            <div className={styles.input}>
-              <label className={styles.label}>
-                Username
-                <input
-                  placeholder="Bill"
-                  name="username"
-                  {...register('username', registerOptions.username)}
-                />
-              </label>
-              <p className={styles.error}>{errors.username?.message}</p>
-            </div>
-            <div className={styles.input}>
-              <label className={styles.label}>
-                Password
-                <input
-                  placeholder="Password"
-                  name="password"
-                  type="password"
-                  {...register('password', registerOptions.password)}
-                />
-              </label>
-              <p className={styles.error}>{errors.password?.message}</p>
-            </div>
-            <Button type="submit">Submit</Button>
+
+            <label className={styles.label}>
+              <input
+                className={styles.input}
+                placeholder="email@example.com"
+                type="email"
+                name="email"
+                {...register('email', registerOptions.email)}
+              />
+            </label>
+            <p className={styles.error}>{errors.email?.message}</p>
+
+            <label className={styles.label}>
+              <input
+                className={styles.input}
+                placeholder="Username"
+                name="username"
+                {...register('username', registerOptions.username)}
+              />
+            </label>
+            <p className={styles.error}>{errors.username?.message}</p>
+
+            <label className={styles.label}>
+              <input
+                className={styles.input}
+                placeholder="Password"
+                name="password"
+                type="password"
+                {...register('password', registerOptions.password)}
+              />
+            </label>
+            <p className={styles.error}>{errors.password?.message}</p>
+
+            <Button className={styles.button} type="submit">
+              Submit
+            </Button>
           </form>
         )}
         {error && <p className={styles.error}>{error}</p>}
@@ -168,4 +161,4 @@ const Register = () => {
     </main>
   );
 };
-export default Register;
+export default withLayout(Register);

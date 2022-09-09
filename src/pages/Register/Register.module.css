@@ -1,77 +1,28 @@
-@import '../../styles/global.css';
-
 .register {
+  margin: 20px;
+  height: 100%;
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 
-  background: var(--gradient);
+  background: var(--white);
 }
 
 .wrapper {
-  background-color: var(--black);
-  padding: 40px 20px;
-  border-radius: 20px;
-  box-shadow: 3px 5px 15px var(--black);
+  padding: 50px;
+  box-shadow: 0 9px 62px rgb(0 0 0 / 20%);
   width: 500px;
   text-align: center;
-}
-
-.picture {
-  position: relative;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  border: 4px dotted var(--primary);
-  overflow: hidden;
-  z-index: 1;
-}
-
-.error__img {
-  border: 4px dotted rgb(192, 34, 34);
-}
-
-.picture::after {
-  content: '+';
-  width: 50px;
-  height: 1px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  color: var(--white);
-  z-index: -1;
-  line-height: 0px;
-  font-size: 36px;
-}
-
-.picture label {
-  height: 100%;
-  width: 100%;
-  display: block;
-  cursor: pointer;
-}
-
-.picture img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 3;
-}
-
-.hidden {
-  display: none;
 }
 
 .hr {
   margin-top: 20px;
   height: 1px;
   width: 50%;
-  background: var(--primary);
+  background: var(--green-100);
   border: none;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
 }
 
 .form {
@@ -90,7 +41,7 @@
 
 .icon {
   display: block;
-  height: 90px;
+  height: 24px;
   text-align: center;
 }
 
@@ -107,56 +58,112 @@
   transition: all 0.2s ease-in-out;
 }
 
-.subtitle {
-  color: var(--yellow);
-  font-size: 20px;
-}
-
-.label {
-  color: var(--white);
-  font-size: 20px;
-}
-
-.input {
-  width: 80%;
-}
-
-.input input {
-  border: none;
-  outline: none;
-  display: block;
-  margin-top: 10px;
-  width: 100%;
-  padding: 10px 8px;
-  border-radius: 10px;
-  border-bottom: 2px solid var(--primary);
-  transition: all 0.2s ease-in-out;
-
-  font-size: 18px;
-  color: var(--grey);
-}
-
-.links {
-  margin-top: 30px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  font-size: 18px;
-}
-
-.links a {
-  color: var(--white);
-  text-decoration: none;
-
-  transition: all 0.2s ease-in-out;
-}
-
-.links a:hover {
-  color: var(--primary);
-}
-
 .error {
   color: rgb(192, 34, 34);
   margin: 10px 0 0 0;
   padding: 0;
+}
+
+.title {
+  text-transform: uppercase;
+  margin-bottom: 45px;
+  font-size: 36px;
+  line-height: 1.4;
+  color: var(--black-100);
+  font-weight: normal;
+  font-family: var(--font-family);
+}
+
+.label {
+  width: 100%;
+}
+
+.input {
+  width: 100%;
+  outline: none;
+  border: none;
+  font-size: 14px;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+
+  transition: 0.4s;
+}
+
+.contact textarea {
+  margin-bottom: 40px;
+}
+
+.input:focus {
+  border-bottom-color: var(--green-100);
+  color: #111;
+}
+
+.button {
+  padding: 15px 10px;
+  min-width: 150px;
+  margin-bottom: 20px;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.links a {
+  transition: all 0.3s;
+}
+
+.links a:hover {
+  color: var(--green-100);
+}
+
+.hidden {
+  display: none;
+}
+
+.attach {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-bottom: 20px;
+}
+
+.file {
+  flex-shrink: 1;
+  width: 100%;
+  margin: auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--green-100);
+
+  text-align: center;
+  font-size: 24px;
+  text-transform: uppercase;
+
+  transition: all 0.12s ease-in-out;
+  cursor: pointer;
+}
+
+.img {
+  margin-top: 20px;
+  width: 80%;
+  box-shadow: 0 9px 62px rgb(0 0 0 / 20%);
+}
+
+.img img {
+  width: 100%;
+  height: 100%;
+}
+
+.file img {
+  height: 20px;
+  margin-right: 10px;
+}
+
+.file:hover {
+  color: var(--green-100);
 }
