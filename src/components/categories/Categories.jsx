@@ -10,15 +10,7 @@ const Categories = ({ selectCategory, className = '' }) => {
 
   const getAllCategories = async () => {
     const { data } = await axios.get('categories').catch((e) => console.log(e));
-    setCategories([
-      {
-        name: 'All',
-      },
-      {
-        name: 'IT',
-      },
-      ...data,
-    ]);
+    setCategories([...data]);
   };
 
   useEffect(() => {

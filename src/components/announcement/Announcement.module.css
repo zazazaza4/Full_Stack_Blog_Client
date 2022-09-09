@@ -20,3 +20,15 @@
   text-align: center;
   font-weight: normal;
 }
+
+@media (max-width: 720px) {
+  .announcement {
+    padding: 20px 40px;
+  }
+}
+
+@media (max-width: 420px) {
+  .title {
+    font-size: 32px;
+  }
+}

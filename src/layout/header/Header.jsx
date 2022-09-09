@@ -8,6 +8,7 @@ import search from '../../assets/search.svg';
 import styles from './Header.module.css';
 
 const Header = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const [sticky, setSticky] = useState('');
 
   const navigate = useNavigate();
@@ -18,6 +19,14 @@ const Header = () => {
       window.removeEventListener('scroll', isSticky);
     };
   }, []);
+
+  const openMenu = () => {
+    if (window.innerWidth< 840) {
+      console.log(window.innerWidth);
+      document.body.style.overflow = isOpen ? 'visible' : 'hidden';
+    }
+    setIsOpen((isOpen) => !isOpen);
+  };
 
   const isSticky = () => {
     const scrollTop = window.scrollY;
@@ -36,8 +45,8 @@ const Header = () => {
         >
           <img src={icon} alt="SUNZINE" />
         </div>
-        <div className={styles.right}>
-          <nav className={styles.menu}>
+        <div className={`${styles.right} ${isOpen && styles.active}`}>
+          <nav className={`${styles.menu}`}>
             <ul>
               <li className={styles.item}>
                 <NavLink
@@ -85,7 +94,7 @@ const Header = () => {
             <div className={styles.switches_icon}>
               <img src={search} alt="" />
             </div>
-            <div className={styles.hamburger}>
+            <div onClick={openMenu} className={styles.hamburger}>
               <span className={`${styles.line} ${styles.line1}`}></span>
               <span className={`${styles.line} ${styles.line2}`}></span>
               <span className={`${styles.line} ${styles.line3}`}></span>
