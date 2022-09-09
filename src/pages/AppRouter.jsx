@@ -36,7 +36,7 @@ const AppRouter = () => {
         </div>
       }
     >
-      {false ? (
+      {isAuth ? (
         <Routes>
           {privateRoutes.map(({ path, Component }) => {
             return <Route key={path} path={path} element={<Component />} />;
