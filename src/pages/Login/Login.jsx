@@ -39,7 +39,7 @@ const Login = () => {
       }
       dispatch(logIn(res));
     } catch (error) {
-      setError(error.response?.data.message);
+      setError(error.response?.data?.message);
     } finally {
       setLoading(false);
     }

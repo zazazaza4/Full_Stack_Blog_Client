@@ -18,7 +18,6 @@ const Categories = ({ selectCategory, className = '' }) => {
   });
 
   const focusOnItem = (id) => {
-    console.log(itemRefs.current);
     itemRefs.current.forEach((element) => {
       element.classList.remove(styles.selected);
     });

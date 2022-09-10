@@ -1,4 +1,5 @@
 import axios from '../../utils/axios';
+import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { withLayout } from '../../layout/Layout';
@@ -19,6 +20,8 @@ const Home = () => {
   const dispatch = useDispatch();
   const { posts } = useSelector((state) => state.post);
 
+  const navigate = useNavigate();
+
   const getAllPosts = async () => {
     const { data } = await axios.get('posts').catch((e) => console.log(e));
     dispatch(setPosts(data.posts));
@@ -31,6 +34,7 @@ const Home = () => {
 
   const selectCategory = (name) => {
     setCategory(() => name);
+    navigate(`/?category=${name}`);
   };
 
   const renderPosts = (posts) => {
@@ -43,7 +47,7 @@ const Home = () => {
       return false;
     });
 
-    return filtredPosts.map((post) => {
+    return posts.map((post) => {
       return (
         <li className={styles.item} key={post._id}>
           <Post {...post} />
