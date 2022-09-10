@@ -1,5 +1,5 @@
 :root {
-  --black: #232832;
+  --black: #000;
   --black-100: #111;
   --black-200: #222;
   --white: white;
@@ -7,19 +7,6 @@
 
   --grey-100: #b7b7b7;
   --grey-200: #707070;
-
-  --dark: rgba(0, 0, 0, 0.9);
-  --white-100: #eee;
-  --white-200: rgb(170, 170, 170);
-  --yellow: #f9e564;
-  --primary: #63b5bb;
-  --grey: #333;
-  --grey-light: #f1f1f3;
-  --gradient: linear-gradient(
-    45deg,
-    rgba(250, 230, 101, 1) 0%,
-    rgba(99, 181, 187, 1) 100%
-  );
 
   --font-family-main: 'Raleway', sans-serif;
   --font-family: 'Aldrich', sans-serif;

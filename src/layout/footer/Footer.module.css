@@ -33,3 +33,10 @@
 .github:hover {
   transform: scale(1.3);
 }
+
+@media (max-width: 970px) {
+  .wrapper {
+    flex-direction: column;
+    gap: 20px;
+  }
+}

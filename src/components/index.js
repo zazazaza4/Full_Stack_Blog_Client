@@ -9,6 +9,7 @@ import Categories from './categories/Categories';
 import Banner from './banner/Banner';
 import GoogleMap from './googleMap/GoogleMap';
 import Comment from './comment/Comment';
+import Modal from './modals/Modal';
 
 export {
   Widget,
@@ -22,4 +23,5 @@ export {
   Categories,
   GoogleMap,
   Comment,
+  Modal,
 };
