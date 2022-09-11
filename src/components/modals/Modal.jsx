@@ -17,7 +17,7 @@ const Modal = ({ handleClose, show, children, onConfirm }) => {
   return (
     <motion.div animate={controls} className={showHideClassName}>
       <section className={styles.main}>
-        <span class={styles.close} onClick={handleClose}>
+        <span className={styles.close} onClick={handleClose}>
           &times;
         </span>
         <div className={styles.body}>{children}</div>

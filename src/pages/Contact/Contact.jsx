@@ -2,17 +2,19 @@ import { motion } from 'framer-motion';
 import { Button, GoogleMap } from '../../components';
 import { withLayout } from '../../layout/Layout';
 
+import icon from '../../assets/logo.webp';
+
 import styles from './Contact.module.css';
 
 const Contact = () => {
   return (
     <main className={styles.main}>
-      {<GoogleMap center={10} />}
+      {<GoogleMap className={styles.map} />}
       <div className={styles.wrapper}>
         <div className={styles.body}>
           <div className={styles.left}>
             <div className={styles.logo}>
-              <img src="" alt="" />
+              <img src={icon} alt="" />
             </div>
             <div className={styles.info}>
               <h3 className={styles.h3}>Address:</h3>

@@ -16,7 +16,8 @@
 }
 
 .left {
-  flex: 0 0 33.333332%;
+  margin: 10px;
+  flex: 0 1 33.333332%;
 }
 
 .h3 {
@@ -35,8 +36,8 @@
 }
 
 .right {
-  margin: 0 auto;
-  flex: 0 0 66.666667%;
+  margin: 0 20px;
+  flex: 1 1 66.666667%;
 }
 
 .contact {
@@ -81,6 +82,10 @@
 .button {
   padding: 16px 15px;
   min-width: 180px;
+}
+
+.map {
+  width: 100%;
 }
 
 @media (max-width: 900px) {

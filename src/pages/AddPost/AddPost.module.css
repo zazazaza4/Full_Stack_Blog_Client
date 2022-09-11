@@ -82,6 +82,7 @@
 }
 
 .buttons {
+  gap: 20px;
   padding: 20px;
   width: 30%;
   margin: 0 auto;
@@ -95,5 +96,20 @@
   }
   .title {
     font-size: 36px;
+  }
+  .buttons {
+    width: 50%;
+  }
+}
+@media (max-width: 900px) {
+  .edit {
+    border: none;
+    margin: 0;
+  }
+}
+@media (max-width: 400px) {
+  .buttons {
+    padding: 0px;
+    width: 100%;
   }
 }

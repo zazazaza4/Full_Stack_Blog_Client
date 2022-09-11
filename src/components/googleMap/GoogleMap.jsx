@@ -1,5 +1,3 @@
-import { useMemo } from 'react';
-
 import styles from './GoogleMap.module.css';
 
 const GoogleMap = ({ className }) => {

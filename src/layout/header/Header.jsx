@@ -27,6 +27,12 @@ const Header = () => {
     };
   }, []);
 
+  useEffect(() => {
+    if (window.innerWidth < 840) {
+      document.body.style.overflow = !isOpen ? 'visible' : 'hidden';
+    }
+  }, [isOpen]);
+
   const openMenu = () => {
     if (window.innerWidth < 840) {
       document.body.style.overflow = isOpen ? 'visible' : 'hidden';
