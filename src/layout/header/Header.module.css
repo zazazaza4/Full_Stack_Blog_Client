@@ -199,6 +199,8 @@
   }
 
   .active .menu ul {
+    padding: 0;
+    margin-top: 150px;
     flex-direction: column;
     gap: 85px;
     font-size: 32px;

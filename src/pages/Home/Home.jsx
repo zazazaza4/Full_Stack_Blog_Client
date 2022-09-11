@@ -65,7 +65,15 @@ const Home = () => {
         {postsEl.length === 0 ? (
           <Announcement>No Posts Yet</Announcement>
         ) : (
-          <ul className={styles.list}>{postsEl}</ul>
+          <ul className={styles.list}>
+            {postsEl}
+            {postsEl}
+            {postsEl}
+            {postsEl}
+            {postsEl}
+            {postsEl}
+            {postsEl}
+          </ul>
         )}
       </div>
       <div className={styles.more}>

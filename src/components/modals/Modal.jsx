@@ -11,7 +11,7 @@ const Modal = ({ handleClose, show, children, onConfirm }) => {
   const controls = useAnimationControls();
 
   useEffect(() => {
-    controls.start({ scale: [0, 1], transition: { duration: 1 } });
+    controls.start({ scale: [0, 1], transition: { duration: 0.5 } });
   }, []);
 
   return (
