@@ -37,7 +37,7 @@
 
 .left {
   background: url('../../assets/about-contact.webp') 0/100% no-repeat;
-  height: 100%;
+  height: 470px;
   flex: 0 0 50%;
   display: flex;
   justify-content: center;

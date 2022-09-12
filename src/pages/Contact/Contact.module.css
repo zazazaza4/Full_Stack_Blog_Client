@@ -95,8 +95,6 @@
   }
 }
 @media (max-width: 1200px) {
-  .wrapper {
-  }
   .body {
     gap: 30px;
     flex-direction: column;

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
+import { CategorySceleton } from '../skeletons/Skeletons';
 import axios from '../../utils/axios';
 
 import styles from './Categories.module.css';
@@ -15,7 +16,7 @@ const Categories = ({ selectCategory, className = '' }) => {
 
   useEffect(() => {
     getAllCategories();
-  });
+  }, []);
 
   const focusOnItem = (id) => {
     itemRefs.current.forEach((element) => {
@@ -32,6 +33,16 @@ const Categories = ({ selectCategory, className = '' }) => {
   };
 
   const renderPosts = (categories) => {
+    if (categories.length === 0) {
+      return [...Array(5)].map(() => {
+        return (
+          <li className={styles.category}>
+            <CategorySceleton />
+          </li>
+        );
+      });
+    }
+
     return categories.map(({ name }, index) => {
       return (
         <li

@@ -33,6 +33,10 @@ const Header = () => {
     }
   }, [isOpen]);
 
+  useEffect(() => {
+    document.body.style.overflow = !isOpenModal ? 'visible' : 'hidden';
+  }, [isOpenModal]);
+
   const openMenu = () => {
     if (window.innerWidth < 840) {
       document.body.style.overflow = isOpen ? 'visible' : 'hidden';
@@ -129,17 +133,16 @@ const Header = () => {
           </div>
         </div>
       </header>
-      <AnimatePresence>
-        {isOpenModal && (
-          <Modal
-            handleClose={openModule}
-            onConfirm={logOutFromAccount}
-            show={isOpenModal}
-          >
-            Do you really want to log out?
-          </Modal>
-        )}
-      </AnimatePresence>
+
+      {isOpenModal && (
+        <Modal
+          handleClose={openModule}
+          onConfirm={logOutFromAccount}
+          show={isOpenModal}
+        >
+          Do you really want to log out?
+        </Modal>
+      )}
     </>
   );
 };
