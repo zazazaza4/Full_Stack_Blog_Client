@@ -29,16 +29,22 @@
 }
 
 .location {
+  margin: 70px;
+  height: 420px;
+}
+
+.container {
   display: flex;
   align-items: center;
-  margin: 70px;
-  height: 470px;
+  justify-content: center;
+  height: 100%;
 }
 
 .left {
   background: url('../../assets/about-contact.webp') 0/100% no-repeat;
-  height: 470px;
+  height: 100%;
   flex: 0 0 50%;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -47,7 +53,6 @@
 
 .map {
   height: 100%;
-  line-height: 1.8;
 }
 
 .h2 {
@@ -75,4 +80,31 @@
   flex-wrap: wrap;
   gap: 20px;
   align-items: center;
+}
+
+@media (max-width: 1400px) {
+  .left {
+    width: 100%;
+  }
+  .container {
+    flex-direction: column;
+  }
+  .location {
+    padding-top: 50px;
+    padding-bottom: 40px;
+    height: 720px;
+  }
+}
+
+@media (max-width: 700px) {
+  .about {
+    padding: 0px;
+  }
+  .content::before {
+    display: none;
+  }
+  .location {
+    padding-top: 10px;
+    margin: 0 20px;
+  }
 }

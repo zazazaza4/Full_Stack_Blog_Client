@@ -5,7 +5,7 @@ import styles from './Post.module.css';
 
 const Post = ({ title, photo, category = '', createdAt, _id }) => {
   const trunc = (str, length) => {
-    if (typeof str !== 'string' && typeof length !== 'number') {
+    if (typeof str !== 'string' || typeof length !== 'number') {
       return 'Error';
     }
 

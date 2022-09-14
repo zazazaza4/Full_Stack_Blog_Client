@@ -34,9 +34,9 @@ const Categories = ({ selectCategory, className = '' }) => {
 
   const renderPosts = (categories) => {
     if (categories.length === 0) {
-      return [...Array(5)].map(() => {
+      return [...Array(5)].map((_, index) => {
         return (
-          <li className={styles.category}>
+          <li key={index} className={styles.category}>
             <CategorySceleton />
           </li>
         );

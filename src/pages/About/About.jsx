@@ -28,33 +28,37 @@ const About = () => {
           </div>
         </section>
         <section className={styles.location}>
-          <div className={styles.left}>
-            <div className={styles.date}>
-              <h2 className={styles.h2}>LOCATION</h2>
-              <p className={styles.p__contact}>Get directions to our event center</p>
-              <div className={styles.info}>
-                <h3 className={styles.h3}>Address:</h3>
-                <p className={styles.text}>
-                  Sumska St, Kharkiv, Kharkivs'ka oblast, 61000
+          <div className={styles.container}>
+            <div className={styles.left}>
+              <div className={styles.date}>
+                <h2 className={styles.h2}>LOCATION</h2>
+                <p className={styles.p__contact}>
+                  Get directions to our event center
                 </p>
-              </div>
-              <div className={styles.row}>
                 <div className={styles.info}>
-                  <h3 className={styles.h3}>PHONE:</h3>
-                  <p className={styles.text}>+123 4567 8910</p>
+                  <h3 className={styles.h3}>Address:</h3>
+                  <p className={styles.text}>
+                    Sumska St, Kharkiv, Kharkivs'ka oblast, 61000
+                  </p>
+                </div>
+                <div className={styles.row}>
+                  <div className={styles.info}>
+                    <h3 className={styles.h3}>PHONE:</h3>
+                    <p className={styles.text}>+123 4567 8910</p>
+                  </div>
+                  <div className={styles.info}>
+                    <h3 className={styles.h3}>EMAIL:</h3>
+                    <p className={styles.text}>Colorlib.info@gmail.com</p>
+                  </div>
                 </div>
                 <div className={styles.info}>
-                  <h3 className={styles.h3}>EMAIL:</h3>
-                  <p className={styles.text}>Colorlib.info@gmail.com</p>
+                  <h3 className={styles.h3}>WORKING HOURS:</h3>
+                  <p className={styles.text}>08.00am - 21.00pm Weekdays</p>
                 </div>
-              </div>
-              <div className={styles.info}>
-                <h3 className={styles.h3}>WORKING HOURS:</h3>
-                <p className={styles.text}>08.00am - 21.00pm Weekdays</p>
               </div>
             </div>
+            <GoogleMap className={styles.map} />
           </div>
-          <GoogleMap className={styles.map} />
         </section>
       </div>
     </main>

@@ -10,6 +10,7 @@ import Banner from './banner/Banner';
 import GoogleMap from './googleMap/GoogleMap';
 import Comment from './comment/Comment';
 import Modal from './modals/Modal';
+import { PostSceleton } from './skeletons/Skeletons.jsx';
 
 export {
   Widget,
@@ -24,4 +25,5 @@ export {
   GoogleMap,
   Comment,
   Modal,
+  PostSceleton,
 };
