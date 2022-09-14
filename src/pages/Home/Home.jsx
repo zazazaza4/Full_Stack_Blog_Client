@@ -76,7 +76,7 @@ const Home = () => {
   };
 
   const renderPosts = (posts) => {
-    if (true) {
+    if (loading) {
       return [...Array(9)].map((_, index) => {
         return (
           <li key={index} className={styles.item}>
