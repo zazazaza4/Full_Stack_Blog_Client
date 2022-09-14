@@ -1,9 +1,9 @@
 import { motion, useAnimationControls } from 'framer-motion';
 import { useEffect, useRef } from 'react';
-import Button from '../button/Button';
+
 import styles from './Modal.module.css';
 
-const Modal = ({ handleClose, show, children, onConfirm }) => {
+const Modal = ({ handleClose, show, children }) => {
   const ref = useRef(null);
   const showHideClassName = show
     ? `${styles.modal} ${styles.block}`
@@ -28,22 +28,17 @@ const Modal = ({ handleClose, show, children, onConfirm }) => {
       animate={controls}
       className={showHideClassName}
     >
-      <section className={styles.main}>
-        <span tabIndex={0} className={styles.close} onClick={handleClose}>
-          &times;
-        </span>
-        <div className={styles.body}>{children}</div>
-        <div className={styles.buttons}>
-          <Button type="button" onClick={onConfirm}>
-            Ok
-          </Button>
-          <Button type="button" onClick={handleClose}>
-            Close
-          </Button>
-        </div>
-      </section>
+      {children}
     </motion.div>
   );
 };
 
-export default Modal;
+export const withModal = (Component) => {
+  return function withLayoutComponent(props) {
+    return (
+      <Modal {...props}>
+        <Component {...props} />
+      </Modal>
+    );
+  };
+};

@@ -9,7 +9,6 @@ import Categories from './categories/Categories';
 import Banner from './banner/Banner';
 import GoogleMap from './googleMap/GoogleMap';
 import Comment from './comment/Comment';
-import Modal from './modals/Modal';
 import { PostSceleton } from './skeletons/Skeletons.jsx';
 
 export {
@@ -24,6 +23,5 @@ export {
   Categories,
   GoogleMap,
   Comment,
-  Modal,
   PostSceleton,
 };

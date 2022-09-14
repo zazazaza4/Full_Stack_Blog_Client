@@ -6,10 +6,10 @@ import icon from '../../assets/logo.webp';
 import logout from '../../assets/logout.svg';
 import search from '../../assets/search.svg';
 import { logOut } from '../../redux/slices/auth/authSlice';
-import { Modal } from '../../components';
 
 import styles from './Header.module.css';
-import { AnimatePresence } from 'framer-motion';
+import Search from '../../modals/Search';
+import ModalConfirm from '../../modals/ModalConfirm';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -33,10 +33,6 @@ const Header = () => {
     }
   }, [isOpen]);
 
-  useEffect(() => {
-    document.body.style.overflow = !isOpenModal ? 'visible' : 'hidden';
-  }, [isOpenModal]);
-
   const openMenu = () => {
     if (window.innerWidth < 840) {
       document.body.style.overflow = isOpen ? 'visible' : 'hidden';
@@ -44,14 +40,15 @@ const Header = () => {
     setIsOpen((isOpen) => !isOpen);
   };
 
-  const openModule = () => {
-    document.body.style.overflow = isOpenModal ? 'visible' : 'hidden';
+  const handleModule = () => {
     setIsOpenModal(!isOpenModal);
+    document.body.style.overflow = isOpenModal ? 'visible' : 'hidden';
   };
 
   const logOutFromAccount = () => {
     window.localStorage.clear();
     dispatch(logOut());
+    document.body.style.overflow = 'visible';
   };
 
   const isSticky = () => {
@@ -126,7 +123,7 @@ const Header = () => {
                 <span className={`${styles.line} ${styles.line2}`}></span>
                 <span className={`${styles.line} ${styles.line3}`}></span>
               </div>
-              <div onClick={openModule} className={styles.switches_icon}>
+              <div onClick={handleModule} className={styles.switches_icon}>
                 <img src={logout} alt="" />
               </div>
             </div>
@@ -135,13 +132,13 @@ const Header = () => {
       </header>
 
       {isOpenModal && (
-        <Modal
-          handleClose={openModule}
+        <ModalConfirm
+          handleClose={handleModule}
           onConfirm={logOutFromAccount}
           show={isOpenModal}
         >
           Do you really want to log out?
-        </Modal>
+        </ModalConfirm>
       )}
     </>
   );
