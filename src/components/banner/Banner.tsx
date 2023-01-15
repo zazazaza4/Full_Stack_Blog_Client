@@ -1,8 +1,11 @@
+import { FC } from 'react';
 import { motion } from 'framer-motion';
+
+import { BannerProps } from './Banner.props';
 
 import styles from './Banner.module.css';
 
-const Banner = ({ children }) => {
+const Banner: FC<BannerProps> = ({ children }) => {
   return (
     <motion.div
       animate={{ scale: [0, 1] }}
