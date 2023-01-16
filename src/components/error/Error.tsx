@@ -1,9 +1,15 @@
+import { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '../button/Button';
 import styles from './Error.module.css';
 
-const Error = () => {
+const Error: FC = () => {
   const navigate = useNavigate();
+
+  const onClick = (): void => {
+    navigate('/');
+  }
+
   return (
     <main className={styles.wrapper}>
       <div className={styles.error}>
@@ -13,7 +19,7 @@ const Error = () => {
           <p className={styles.text}>
             Sorry, page you requested does not exist or was deleted
           </p>
-          <Button onClick={() => navigate('/')}>Return to home</Button>
+          <Button onClick={onClick}>Return to home</Button>
         </div>
       </div>
     </main>
