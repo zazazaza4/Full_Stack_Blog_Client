@@ -1,8 +1,11 @@
+import {FC} from 'react';
 import { withModal } from './Modal';
+
+import { SearchProps } from './Modal.props';
 
 import styles from './Modal.module.css';
 
-const Search = ({ handleClose }) => {
+const Search: FC<SearchProps> = ({ handleClose }) => {
   return (
     <div className={`${styles.modal} ${styles.search}`}>
       <div className={styles.wrapper}>

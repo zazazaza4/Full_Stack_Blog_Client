@@ -1,9 +1,17 @@
-import { Button } from '../components/index';
-import { withModal } from './Modal';
+import { FC } from "react";
 
-import styles from './Modal.module.css';
+import { Button } from "../components/index";
+import { withModal } from "./Modal";
 
-const ModalConfirm = ({ handleClose, children, onConfirm }) => {
+import { ModalConfirmProps } from "./Modal.props";
+
+import styles from "./Modal.module.css";
+
+const ModalConfirm: FC<ModalConfirmProps> = ({
+  handleClose,
+  children,
+  onConfirm,
+}) => {
   return (
     <section className={styles.main}>
       <span tabIndex={0} className={styles.close} onClick={handleClose}>
