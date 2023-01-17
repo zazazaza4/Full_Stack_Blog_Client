@@ -1,24 +1,30 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { IPost } from "../../../types/Post.interface";
+
+interface PostState {
+  posts: IPost[];
+  popularPosts: IPost[];
+}
 
 const initialState = {
   posts: [],
   popularPosts: [],
-};
+} as PostState;
 
 const postSlice = createSlice({
-  name: 'post',
+  name: "post",
   initialState,
   reducers: {
-    setPosts: (state, action) => {
+    setPosts: (state, action: PayloadAction<IPost[]>) => {
       state.posts = action.payload;
     },
-    setPopularPosts: (state, action) => {
+    setPopularPosts: (state, action: PayloadAction<IPost[]>) => {
       state.popularPosts = action.payload;
     },
-    addPost: (state, action) => {
+    addPost: (state, action: PayloadAction<IPost>) => {
       state.posts.push(action.payload);
     },
-    deletePost: (state, action) => {
+    deletePost: (state, action: PayloadAction<string>) => {
       state.posts = state.posts.filter((post) => post._id !== action.payload);
     },
     updatePost: (state, action) => {
@@ -30,7 +36,7 @@ const postSlice = createSlice({
   },
 });
 
-export const getPosts = (state) => state.posts;
+export const getPosts = (state: PostState) => state.posts;
 
 export const { setPosts, addPost, deletePost, updatePost, setPopularPosts } =
   postSlice.actions;
