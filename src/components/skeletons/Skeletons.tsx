@@ -1,6 +1,10 @@
+import { FC } from 'react';
+
+import { SkeletonsProps } from './Skeletons.props';
+
 import ContentLoader from 'react-content-loader';
 
-export const CategorySceleton = (props) => (
+export const CategorySceleton: FC<SkeletonsProps> = (props) => (
   <ContentLoader
     speed={2}
     width={50}
@@ -15,7 +19,7 @@ export const CategorySceleton = (props) => (
   </ContentLoader>
 );
 
-export const PostSceleton = (props) => (
+export const PostSceleton: FC<SkeletonsProps> = (props) => (
   <ContentLoader
     width={300}
     height={360}
