@@ -1,11 +1,14 @@
-import { Link } from 'react-router-dom';
+import { FC } from "react";
+import { Link } from "react-router-dom";
 
-import icon from '../../assets/logo-white.webp';
-import github from '../../assets/github.svg';
+import { FooterProps } from "./Footer.props";
 
-import styles from './Footer.module.css';
+import icon from "../../assets/logo-white.webp";
+import github from "../../assets/github.svg";
 
-const Footer = () => {
+import styles from "./Footer.module.css";
+
+const Footer: FC<FooterProps> = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.wrapper}>

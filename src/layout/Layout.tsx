@@ -1,9 +1,13 @@
+import { FC, HTMLAttributes } from "react";
+
 import Footer from './footer/Footer';
 import Header from './header/Header';
 
+import { LayoutProps } from "./Layout.props";
+
 import styles from './Layout.module.css';
 
-const Layout = ({ children }) => {
+const Layout: FC<LayoutProps> = ({ children }): React.ReactElement => {
   return (
     <div className={styles.wrapper}>
       <Header className={styles.header} />
@@ -13,8 +17,8 @@ const Layout = ({ children }) => {
   );
 };
 
-export const withLayout = (Component) => {
-  return function withLayoutComponent(props) {
+export function withLayout<T extends HTMLAttributes<HTMLElement>>(Component: React.ComponentType<T>) {
+  return function withLayoutComponent(props: T) {
     return (
       <Layout>
         <Component {...props} />
