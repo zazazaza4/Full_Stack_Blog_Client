@@ -1,3 +1,3 @@
 export interface BannerProps {
-    children: JSX.Element[] | JSX.Element;
+    children: JSX.Element[] | JSX.Element | string;
   }

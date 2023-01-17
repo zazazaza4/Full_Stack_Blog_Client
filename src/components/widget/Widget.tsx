@@ -1,9 +1,12 @@
+import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import format from 'date-format';
 
+import { WidgetProps } from './Widget.props';
+
 import styles from './Widget.module.css';
 
-const Widget = ({ title, list }) => {
+const Widget: FC<WidgetProps> = ({ title, list }) => {
   return (
     <section className={styles.widget}>
       <div className={styles.wrapper}>

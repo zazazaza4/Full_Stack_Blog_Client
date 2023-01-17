@@ -1,10 +1,13 @@
+import { FC } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import format from 'date-format';
-import styles from './Post.module.css';
 
-const Post = ({ title, photo, category = '', createdAt, _id }) => {
-  const trunc = (str, length) => {
+import styles from './Post.module.css';
+import { IPost } from '../../types/Post.interface';
+
+const Post: FC<IPost> = ({ title, photo, category = '', createdAt, _id }) => {
+  const trunc = (str: string, length: number) => {
     if (typeof str !== 'string' || typeof length !== 'number') {
       return 'Error';
     }
