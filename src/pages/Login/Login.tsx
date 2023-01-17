@@ -1,28 +1,48 @@
-import axios from '../../utils/axios';
-import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
-import { Button, Spinner } from '../../components';
-import { logIn } from '../../redux/slices/auth/authSlice';
-import { Link } from 'react-router-dom';
-import { useState } from 'react';
-import icon from '../../assets/logo.webp';
+import { FC, useState } from "react";
+import axios from "../../utils/axios";
+import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { Button, Spinner } from "../../components";
+import { logIn } from "../../redux/slices/auth/authSlice";
+import { Link } from "react-router-dom";
 
-import styles from './Login.module.css';
-import { withLayout } from '../../layout/Layout';
+import styles from "./Login.module.css";
 
-const Login = () => {
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+const loginOptions = {
+  username: {
+    required: "Username is required",
+    minLength: {
+      value: 4,
+      message: "Username must have at least 4 characters",
+    },
+  },
+  password: {
+    required: "Password is required",
+    minLength: {
+      value: 8,
+      message: "Password must have at least 8 characters",
+    },
+  },
+};
+
+interface FormData {
+  username: string;
+  password: string;
+}
+
+const Login: FC = () => {
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<null | string>(null);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm<FormData>();
 
   const dispatch = useDispatch();
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data: FormData) => {
     setError(null);
     const { username, password } = data;
     if (!username || !password) {
@@ -30,36 +50,19 @@ const Login = () => {
     }
     setLoading(true);
     try {
-      const { data: res } = await axios.post('auth/login', {
+      const { data: res } = await axios.post("auth/login", {
         username,
         password,
       });
       if (res.token) {
-        window.localStorage.setItem('token', JSON.stringify(res.token));
+        window.localStorage.setItem("token", JSON.stringify(res.token));
       }
       dispatch(logIn(res));
     } catch (error) {
-      setError(error.response?.data?.message);
+        setError(error.response?.data?.message);
     } finally {
       setLoading(false);
     }
-  };
-
-  const registerOptions = {
-    username: {
-      required: 'Username is required',
-      minLength: {
-        value: 4,
-        message: 'Username must have at least 4 characters',
-      },
-    },
-    password: {
-      required: 'Password is required',
-      minLength: {
-        value: 8,
-        message: 'Password must have at least 8 characters',
-      },
-    },
   };
 
   return (
@@ -75,8 +78,7 @@ const Login = () => {
               <input
                 className={styles.input}
                 placeholder="Username"
-                name="username"
-                {...register('username', registerOptions.username)}
+                {...register("username", loginOptions.username)}
               />
             </label>
             <p className={styles.error}>{errors.username?.message}</p>
@@ -85,9 +87,8 @@ const Login = () => {
               <input
                 className={styles.input}
                 placeholder="Password"
-                name="password"
                 type="password"
-                {...register('password', registerOptions.password)}
+                {...register("password", loginOptions.password)}
               />
             </label>
             <p className={styles.error}>{errors.password?.message}</p>
