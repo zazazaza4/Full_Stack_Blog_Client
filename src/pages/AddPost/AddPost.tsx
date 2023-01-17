@@ -1,47 +1,48 @@
-import { useCallback, useMemo, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import SimpleMDE from 'react-simplemde-editor';
+import { useCallback, useMemo, useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import SimpleMDE from "react-simplemde-editor";
 
-import { addPost } from '../../redux/slices/post/postSlice';
-import axios from '../../utils/axios';
-import { Banner, Button, Categories } from '../../components';
-import { withLayout } from '../../layout/Layout';
+import { addPost } from "../../redux/slices/post/postSlice";
+import axios from "../../utils/axios";
+import { Banner, Button, Categories } from "../../components";
+import { withLayout } from "../../layout/Layout";
 
-import iconUpload from '../../assets/upload.png';
+import iconUpload from "../../assets/upload.png";
 
-import styles from './AddPost.module.css';
+import styles from "./AddPost.module.css";
 
 const AddPost = () => {
-  const [text, setText] = useState('');
-  const [category, setCategory] = useState('');
-  const [title, setTitle] = useState('');
-  const [image, setImage] = useState('');
+  const [text, setText] = useState<string>("");
+  const [category, setCategory] = useState<string>("");
+  const [title, setTitle] = useState<string>("");
+  const [image, setImage] = useState<string | Blob>("");
 
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
 
-  const onChange = useCallback((value) => {
+  const onChange = useCallback((value: string) => {
     setText(value);
   }, []);
 
   const options = useMemo(
     () => ({
       spellChecker: false,
-      maxHeight: '400px',
+      maxHeight: "400px",
       autofocus: true,
-      placeholder: 'Введите текст...',
+      placeholder: "Введите текст...",
       status: false,
       autosave: {
         enabled: true,
         delay: 1000,
+        uniqueId: "options-add-post",
       },
     }),
     []
   );
 
-  const selectCategory = (name) => {
+  const selectCategory = (name: string) => {
     setCategory(name);
   };
 
@@ -51,24 +52,24 @@ const AddPost = () => {
     }
     try {
       const formData = new FormData();
-      formData.append('title', title);
-      formData.append('text', text);
-      formData.append('category', category);
-      formData.append('image', image);
+      formData.append("title", title);
+      formData.append("text", text);
+      formData.append("category", category);
+      formData.append("image", image);
 
-      const { data: res } = await axios.post('posts', formData);
+      const { data: res } = await axios.post("posts", formData);
       dispatch(addPost(res));
       clearData();
-      navigate('/');
+      navigate("/");
     } catch (error) {
       console.log(error);
     }
   };
 
   const clearData = () => {
-    setText('');
-    setTitle('');
-    setImage('');
+    setText("");
+    setTitle("");
+    setImage("");
   };
 
   return (
@@ -84,12 +85,16 @@ const AddPost = () => {
               accept="image/png, image/gif, image/jpeg"
               className={styles.hidden}
               onChange={(e) => {
-                setImage(e.target.files[0]);
+                if (e && e.target && e.target.files) {
+                  setImage(e.target.files[0]);
+                }
               }}
             />
           </label>
           <div className={styles.img}>
-            {image && <img src={URL.createObjectURL(image)} alt={image.name} />}
+            {image && (
+              <img src={URL.createObjectURL(image as Blob)} alt={"article"} />
+            )}
           </div>
         </div>
 

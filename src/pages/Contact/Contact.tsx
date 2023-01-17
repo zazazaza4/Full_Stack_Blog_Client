@@ -1,12 +1,13 @@
-import { motion } from 'framer-motion';
-import { Button, GoogleMap } from '../../components';
-import { withLayout } from '../../layout/Layout';
+import { motion } from "framer-motion";
+import { Button, GoogleMap } from "../../components";
+import { FC } from "react";
+import { withLayout } from "../../layout/Layout";
 
-import icon from '../../assets/logo.webp';
+import icon from "../../assets/logo.webp";
 
-import styles from './Contact.module.css';
+import styles from "./Contact.module.css";
 
-const Contact = () => {
+const Contact: FC = () => {
   return (
     <main className={styles.main}>
       {<GoogleMap className={styles.map} />}
@@ -39,7 +40,7 @@ const Contact = () => {
           </div>
           <motion.div
             animate={{ scale: [0, 0.5, 1] }}
-            transition={{ ease: 'easeOut', duration: 1 }}
+            transition={{ ease: "easeOut", duration: 1 }}
             className={styles.right}
           >
             <div className={styles.contact}>

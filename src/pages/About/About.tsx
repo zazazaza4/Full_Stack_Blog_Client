@@ -1,9 +1,10 @@
-import { Announcement, Banner, GoogleMap } from '../../components';
-import { withLayout } from '../../layout/Layout';
+import { FC } from "react";
+import { Announcement, Banner, GoogleMap } from "../../components";
+import { withLayout } from "../../layout/Layout";
 
-import styles from './About.module.css';
+import  styles from "./About.module.css";
 
-const About = () => {
+const About: FC = () => {
   return (
     <main className={styles.about}>
       <Banner>About this project</Banner>
@@ -64,4 +65,5 @@ const About = () => {
     </main>
   );
 };
+
 export default withLayout(About);
