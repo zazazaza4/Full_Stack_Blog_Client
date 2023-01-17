@@ -1,70 +1,73 @@
-import { useEffect, useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { FC, useEffect, useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 
-import icon from '../../assets/logo.webp';
-import logout from '../../assets/logout.svg';
-import search from '../../assets/search.svg';
-import { logOut } from '../../redux/slices/auth/authSlice';
+import { useDispatch } from "react-redux";
+import { logOut } from "../../redux/slices/auth/authSlice";
 
-import styles from './Header.module.css';
-import Search from '../../modals/Search';
-import ModalConfirm from '../../modals/ModalConfirm';
+import { HeaderProps } from "./Header.props";
 
-const Header = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isOpenModal, setIsOpenModal] = useState(false);
-  const [sticky, setSticky] = useState('');
+import ModalConfirm from "../../modals/ModalConfirm";
+
+import icon from "../../assets/logo.webp";
+import logout from "../../assets/logout.svg";
+import search from "../../assets/search.svg";
+
+import styles from "./Header.module.css";
+
+const Header: FC<HeaderProps> = () => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
+  const [isSticky, setIsSticky] = useState<boolean>(false);
 
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    window.addEventListener('scroll', isSticky);
+    window.addEventListener("scroll", onIsSticky);
     return () => {
-      window.removeEventListener('scroll', isSticky);
+      window.removeEventListener("scroll", onIsSticky);
     };
   }, []);
 
   useEffect(() => {
     if (window.innerWidth < 840) {
-      document.body.style.overflow = !isOpen ? 'visible' : 'hidden';
+      document.body.style.overflow = !isOpen ? "visible" : "hidden";
     }
   }, [isOpen]);
 
   const openMenu = () => {
     if (window.innerWidth < 840) {
-      document.body.style.overflow = isOpen ? 'visible' : 'hidden';
+      document.body.style.overflow = isOpen ? "visible" : "hidden";
     }
     setIsOpen((isOpen) => !isOpen);
   };
 
   const handleModule = () => {
     setIsOpenModal(!isOpenModal);
-    document.body.style.overflow = isOpenModal ? 'visible' : 'hidden';
+    document.body.style.overflow = isOpenModal ? "visible" : "hidden";
   };
 
   const logOutFromAccount = () => {
     window.localStorage.clear();
     dispatch(logOut());
-    document.body.style.overflow = 'visible';
+    document.body.style.overflow = "visible";
   };
 
-  const isSticky = () => {
+  const onIsSticky = () => {
     const scrollTop = window.scrollY;
-    const stickyClass = !!(scrollTop >= 150);
-    setSticky(stickyClass);
+    const stickyClass = Boolean(scrollTop >= 150);
+    setIsSticky(stickyClass);
   };
 
   return (
     <>
-      <header className={`${styles.header} ${sticky && styles.sticky}`}>
+      <header className={`${styles.header} ${isSticky && styles.sticky}`}>
         <div className={styles.wrapper}>
           <div
             className={styles.icon}
             onClick={() => {
-              navigate('/');
+              navigate("/");
             }}
           >
             <img src={icon} alt="SUNZINE" />
@@ -76,7 +79,7 @@ const Header = () => {
                   <NavLink
                     to="/"
                     className={({ isActive }) =>
-                      `${styles.link} ${isActive ? styles.selected : ''}`
+                      `${styles.link} ${isActive ? styles.selected : ""}`
                     }
                   >
                     HOME
@@ -86,7 +89,7 @@ const Header = () => {
                   <NavLink
                     to="/posts/new"
                     className={({ isActive }) =>
-                      `${styles.link} ${isActive ? styles.selected : ''}`
+                      `${styles.link} ${isActive ? styles.selected : ""}`
                     }
                   >
                     CREATE
@@ -96,7 +99,7 @@ const Header = () => {
                   <NavLink
                     to="/contact"
                     className={({ isActive }) =>
-                      `${styles.link} ${isActive ? styles.selected : ''}`
+                      `${styles.link} ${isActive ? styles.selected : ""}`
                     }
                   >
                     CONTACT
@@ -106,7 +109,7 @@ const Header = () => {
                   <NavLink
                     to="/about"
                     className={({ isActive }) =>
-                      `${styles.link} ${isActive ? styles.selected : ''}`
+                      `${styles.link} ${isActive ? styles.selected : ""}`
                     }
                   >
                     ABOUT
