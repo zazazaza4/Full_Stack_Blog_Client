@@ -1,26 +1,29 @@
-import { useCallback, useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
-import { Link, useParams } from 'react-router-dom';
-import format from 'date-format';
+import { FC, useCallback, useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { Link, useParams } from "react-router-dom";
+import format from "date-format";
 import {
   Announcement,
   Button,
   Comment,
   Spinner,
   Widget,
-} from '../../components';
-import { useSelector } from 'react-redux';
-import iconView from '../../assets/view.svg';
-import { withLayout } from '../../layout/Layout';
-import axios from '../../utils/axios';
-import ReactMarkdown from 'react-markdown';
+} from "../../components";
+import { useSelector } from "react-redux";
+import iconView from "../../assets/view.svg";
+import { withLayout } from "../../layout/Layout";
+import axios from "../../utils/axios";
+import ReactMarkdown from "react-markdown";
 
-import styles from './SinglePost.module.css';
+import { RootState } from "../../redux/store";
+import { IPost } from "../../types/Post.interface";
 
-const SinglePost = () => {
-  const [post, setPost] = useState(null);
+import styles from "./SinglePost.module.css";
 
-  const { popularPosts } = useSelector((state) => state.post);
+const SinglePost: FC = () => {
+  const [post, setPost] = useState<null | IPost>(null);
+
+  const { popularPosts } = useSelector((state: RootState) => state.post);
 
   const params = useParams();
 
@@ -59,7 +62,7 @@ const SinglePost = () => {
         <div className={styles.row}>
           <motion.div
             animate={{ opacity: [0, 0.5, 1], scale: [0, 1] }}
-            transition={{ ease: 'easeOut', duration: 1 }}
+            transition={{ ease: "easeOut", duration: 1 }}
             className={styles.left}
           >
             <article className={styles.article}>
@@ -71,7 +74,7 @@ const SinglePost = () => {
               <div className={styles.img}>
                 <img
                   src={`${process.env.REACT_APP_API_URL}${
-                    photo || 'default.jpg'
+                    photo || "default.jpg"
                   }`}
                   alt=""
                   className=""
@@ -81,7 +84,7 @@ const SinglePost = () => {
               <footer className={styles.footer}>
                 <div className={styles.row_meta}>
                   <p className={styles.author}>
-                    Author:{' '}
+                    Author:{" "}
                     <Link className={styles.link} to={`/?userId=${author}`}>
                       {username}
                     </Link>
