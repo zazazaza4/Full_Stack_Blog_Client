@@ -37,11 +37,15 @@ const Home: FC = () => {
 
   const getPosts = async (oldPosts: IPost[]) => {
     setLoading(true);
+    let categoryParams = category;
+    if (categoryParams === "ALL") {
+      categoryParams = "";
+    }
 
     try {
       const { data } = await axios.get<GetPostsResponse>("posts", {
         params: {
-          category,
+          category: categoryParams,
           page,
           limit: 1,
         },
