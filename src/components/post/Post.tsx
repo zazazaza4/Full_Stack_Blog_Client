@@ -1,19 +1,23 @@
-import { FC } from 'react';
-import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import format from 'date-format';
+import { FC, useState } from "react";
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import format from "date-format";
 
-import styles from './Post.module.css';
-import { IPost } from '../../types/Post.interface';
+import styles from "./Post.module.css";
+import { IPost } from "../../types/Post.interface";
 
-const Post: FC<IPost> = ({ title, photo, category = '', createdAt, _id }) => {
+const Post: FC<IPost> = ({ title, photo, category = "", createdAt, _id }) => {
+  const [imgSrc, setImgSrc] = useState<string | undefined>(photo);
+
+  const onError = () => setImgSrc("default.jpg");
+
   const trunc = (str: string, length: number) => {
-    if (typeof str !== 'string' || typeof length !== 'number') {
-      return 'Error';
+    if (typeof str !== "string" || typeof length !== "number") {
+      return "Error";
     }
 
     if (str.length > length) {
-      return str.slice(0, length) + '...';
+      return str.slice(0, length) + "...";
     }
     return str;
   };
@@ -21,13 +25,16 @@ const Post: FC<IPost> = ({ title, photo, category = '', createdAt, _id }) => {
   return (
     <motion.article
       animate={{ opacity: [0, 0.5, 1] }}
-      transition={{ ease: 'easeOut', duration: 1 }}
+      transition={{ ease: "easeOut", duration: 1 }}
       className={styles.post}
     >
       <Link to={`posts/${_id}`}>
         <div className={styles.img}>
           <img
-            src={`${process.env.REACT_APP_API_URL}${photo || 'default.jpg'}`}
+            src={`${process.env.REACT_APP_API_URL}${
+              imgSrc ? imgSrc : "default.jpg"
+            }`}
+            onError={onError}
             alt={title}
           />
         </div>
