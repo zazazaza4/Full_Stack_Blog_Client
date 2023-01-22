@@ -1,3 +1,5 @@
+import { IComment } from "../../types/Comment.interface";
+
 export interface CommentProps {
-    comment: string;
-  }
+  comment: IComment;
+}
