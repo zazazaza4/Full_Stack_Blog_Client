@@ -1,10 +1,10 @@
-import { FC } from 'react';
-import { Link } from 'react-router-dom';
-import format from 'date-format';
+import { FC } from "react";
+import { Link } from "react-router-dom";
+import format from "date-format";
 
-import { WidgetProps } from './Widget.props';
+import { WidgetProps } from "./Widget.props";
 
-import styles from './Widget.module.css';
+import styles from "./Widget.module.css";
 
 const Widget: FC<WidgetProps> = ({ title, list }) => {
   return (
@@ -15,7 +15,7 @@ const Widget: FC<WidgetProps> = ({ title, list }) => {
           {list?.map((item) => {
             return (
               <li key={item._id} className={styles.item}>
-                <Link className={styles.link} to={`posts/${item._id}`}>
+                <Link className={styles.link} to={`/posts/${item._id}`}>
                   <div className={styles.category}>{item.category}</div>
                   <h5 className={styles.h5}>{item.title}</h5>
                   <div className={styles.date}>

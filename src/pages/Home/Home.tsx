@@ -1,4 +1,4 @@
-import { useEffect, useState, FC, useMemo, useCallback } from "react";
+import { useEffect, useState, FC, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -46,8 +46,7 @@ const Home: FC = () => {
       const { data } = await axios.get<GetPostsResponse>("posts", {
         params: {
           category: categoryParams,
-          page,
-          limit: 1,
+          page: 1,
         },
       });
 
@@ -79,7 +78,7 @@ const Home: FC = () => {
 
   const selectCategory = (name: string) => {
     if (name) {
-      setCategory(name);
+      setCategory(() => name);
       navigate(`?category=${name}`);
     }
   };
@@ -105,7 +104,7 @@ const Home: FC = () => {
     [loading]
   );
 
-  const postsEl = useMemo(() => renderPosts(posts), [posts, renderPosts]);
+  const postsEl = renderPosts(posts);
   return (
     <main className={styles.main}>
       <Announcement>HELLO! WELCOME TO OUR BLOG</Announcement>
