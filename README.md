@@ -1,6 +1,15 @@
-# Getting Started with Create React App
+# Full_Stack_Blog_Client
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A full stack blog server is a server that handles all aspects of running a blog, including the database, backend logic, and frontend user interface. It typically includes a database to store blog posts, user information, and other data, as well as a server-side application to handle the logic of the blog, such as displaying posts and handling user input. The frontend, or user interface, is typically a web page that displays the blog content and allows users to interact with it, such as by leaving comments or searching for posts.
+
+### What did i use to create the app:
+ [Frontend](https://github.com/zazazaza4/Full_Stack_Blog_Client) | [Backend](https://github.com/zazazaza4/Full_Stack_Blog_Server)
+------------- | -------------
+React  | Express
+Redux Toolkit  |  bcrypt
+TypeScript  |  Cors
+React Hook Form   |  Jsonwebtoken
+Framer Motion   |  Mongoose
 
 ## Available Scripts
 
